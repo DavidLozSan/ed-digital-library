@@ -17,11 +17,4 @@ public class UserDataRepository implements UserRepository {
     public void save(User user) {
         userFileLocalDataSource.save(user);
     }
-    /*
-    public UserDataRepository() {
-        this.userFileLocalDataSource = new UserFileLocalDataSource();
-    }
-    public UserDataRepository(UserFileLocalDataSource userFileLocalDataSource) {
-        this.userFileLocalDataSource = userFileLocalDataSource;
-    }*/
 }
