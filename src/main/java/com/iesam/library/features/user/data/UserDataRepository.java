@@ -7,10 +7,9 @@ import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
 
 public class UserDataRepository implements UserRepository {
     private UserFileLocalDataSource userFileLocalDataSource;
-    private UserMemLocalDataSource userMemLocalDataSource;
 
-    public UserDataRepository() {
-        this.userFileLocalDataSource = new UserFileLocalDataSource();
+    public UserDataRepository(UserFileLocalDataSource userFileLocalDataSource) {
+        this.userFileLocalDataSource = userFileLocalDataSource;
     }
 
     @Override

@@ -6,13 +6,17 @@ public class User {
     public final String nombre;
     public final String apellidos;
     public final String fechaExped;
+    public final String email;
+    public final String telefono;
 
-    public User(String codigo, String dni, String nombre, String apellidos, String fechaExped) {
+    public User(String codigo, String dni, String nombre, String apellidos, String fechaExped, String email, String telefono) {
         this.codigo = codigo;
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaExped = fechaExped;
+        this.email = email;
+        this.telefono = telefono;
     }
 
     public String getCodigo() {
@@ -33,5 +37,13 @@ public class User {
 
     public String getFechaExped() {
         return fechaExped;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefono() {
+        return telefono;
     }
 }

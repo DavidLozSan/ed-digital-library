@@ -29,7 +29,11 @@ public class Main {
                     String apellidos = sc.nextLine();
                     System.out.println("Dame el fecha de expedición del usuario");
                     String fechaExped = sc.nextLine();
-                    User u1 = new User(codigo, dni, nombre, apellidos, fechaExped);
+                    System.out.println("Dame el email del usuario");
+                    String email = sc.nextLine();
+                    System.out.println("Dame el telefono del usuario");
+                    String telefono = sc.nextLine();
+                    User u1 = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
                     UserPresentation.save(u1);
                     break;
                 case 0:
