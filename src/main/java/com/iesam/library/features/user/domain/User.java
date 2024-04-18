@@ -18,6 +18,7 @@ public class User {
     public String getCodigo() {
         return codigo;
     }
+
     public String getDni() {
         return dni;
     }

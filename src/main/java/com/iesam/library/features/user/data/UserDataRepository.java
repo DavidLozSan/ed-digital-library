@@ -9,9 +9,10 @@ public class UserDataRepository implements UserRepository {
     private UserFileLocalDataSource userFileLocalDataSource;
     private UserMemLocalDataSource userMemLocalDataSource;
 
-    public UserDataRepository () {
+    public UserDataRepository() {
         this.userFileLocalDataSource = new UserFileLocalDataSource();
     }
+
     @Override
     public void save(User user) {
         userFileLocalDataSource.save(user);
