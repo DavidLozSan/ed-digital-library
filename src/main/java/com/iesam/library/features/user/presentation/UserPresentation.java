@@ -2,10 +2,12 @@ package com.iesam.library.features.user.presentation;
 
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.library.features.user.domain.GetUsersUseCase;
 import com.iesam.library.features.user.domain.GetUserUseCase;
 import com.iesam.library.features.user.domain.SaveUserUseCase;
 import com.iesam.library.features.user.domain.User;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserPresentation {
@@ -30,12 +32,19 @@ public class UserPresentation {
         saveUserUseCase.execute(user);
     }
 
+
+    public static void obtainUsers() {
+        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        List<User> users = getUsersUseCase.execute();
+        System.out.println(users);
+    }
+
     public static void obtain() {
         GetUserUseCase getUserUseCase = new GetUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el codigo del usuario que quieres encontrar");
         String codigo = sc.nextLine();
         User user = getUserUseCase.execute(codigo);
-        System.out.println(user.toString());
+        System.out.println(user);
     }
 }
