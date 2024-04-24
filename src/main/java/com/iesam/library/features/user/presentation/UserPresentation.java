@@ -2,9 +2,11 @@ package com.iesam.library.features.user.presentation;
 
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.library.features.user.domain.GetUsersUseCase;
 import com.iesam.library.features.user.domain.SaveUserUseCase;
 import com.iesam.library.features.user.domain.User;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserPresentation {
@@ -27,5 +29,11 @@ public class UserPresentation {
         String telefono = sc.nextLine();
         User user = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
         saveUserUseCase.execute(user);
+    }
+
+    public static void obtainUsers() {
+        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        List<User> users = getUsersUseCase.execute();
+        System.out.println(users.toString());
     }
 }

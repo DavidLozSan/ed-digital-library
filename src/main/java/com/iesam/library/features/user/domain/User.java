@@ -19,6 +19,11 @@ public class User {
         this.telefono = telefono;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "codigo='" + codigo + '\'' + ", dni='" + dni + '\'' + ", nombre='" + nombre + '\'' + ", apellidos='" + apellidos + '\'' + ", fechaExped='" + fechaExped + '\'' + ", email='" + email + '\'' + ", telefono='" + telefono + '\'' + '}';
+    }
+
     public String getCodigo() {
         return codigo;
     }
