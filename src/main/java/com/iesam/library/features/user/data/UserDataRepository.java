@@ -15,4 +15,9 @@ public class UserDataRepository implements UserRepository {
     public void save(User user) {
         userFileLocalDataSource.save(user);
     }
+
+    @Override
+    public User obtain(String codigo) {
+        return userFileLocalDataSource.findByCodigo(codigo);
+    }
 }

@@ -13,12 +13,16 @@ public class Main {
             System.out.println("\n---------------------------------");
             System.out.println("\nMenú:\n");
             System.out.println("1. Añadir usuario");
+            System.out.println("2. Buscar usuario (por su código)");
             System.out.println("0. Salir");
             System.out.println("\n---------------------------------");
             Integer opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
                     UserPresentation.save();
+                    break;
+                case 2:
+                    UserPresentation.obtain();
                     break;
                 case 0:
                     bucle = false;

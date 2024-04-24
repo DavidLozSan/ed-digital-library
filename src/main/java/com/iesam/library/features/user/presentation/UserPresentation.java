@@ -2,6 +2,7 @@ package com.iesam.library.features.user.presentation;
 
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.library.features.user.domain.GetUserUseCase;
 import com.iesam.library.features.user.domain.SaveUserUseCase;
 import com.iesam.library.features.user.domain.User;
 
@@ -27,5 +28,14 @@ public class UserPresentation {
         String telefono = sc.nextLine();
         User user = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
         saveUserUseCase.execute(user);
+    }
+
+    public static void obtain() {
+        GetUserUseCase getUserUseCase = new GetUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dame el codigo del usuario que quieres encontrar");
+        String codigo = sc.nextLine();
+        User user = getUserUseCase.execute(codigo);
+        System.out.println(user.toString());
     }
 }
