@@ -22,4 +22,9 @@ public class UserDataRepository implements UserRepository {
     public List<User> obtainUsers() {
         return userFileLocalDataSource.findAll();
     }
+
+    @Override
+    public User obtain(String codigo) {
+        return userFileLocalDataSource.findByCodigo(codigo);
+    }
 }
