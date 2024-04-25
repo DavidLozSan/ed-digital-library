@@ -58,6 +58,20 @@ public class UserPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario a modificar");
         String codigo = sc.nextLine();
+        System.out.println("Dame el dni del usuario");
+        String dni = sc.nextLine();
+        System.out.println("Dame el nombre del usuario");
+        String nombre = sc.nextLine();
+        System.out.println("Dame el apellidos del usuario");
+        String apellidos = sc.nextLine();
+        System.out.println("Dame el fecha de expedición del usuario");
+        String fechaExped = sc.nextLine();
+        System.out.println("Dame el email del usuario");
+        String email = sc.nextLine();
+        System.out.println("Dame el telefono del usuario");
+        String telefono = sc.nextLine();
+        User user = new User(codigo,dni,nombre,apellidos,fechaExped,email,telefono);
         UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(new UserDataRepository(new UserFileLocalDataSource()));
+        updateUserUserCase.execute(user);
     }
 }
