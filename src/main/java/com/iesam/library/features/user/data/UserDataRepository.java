@@ -27,4 +27,9 @@ public class UserDataRepository implements UserRepository {
     public User obtain(String codigo) {
         return userFileLocalDataSource.findByCodigo(codigo);
     }
+
+    @Override
+    public void delete(String codigo) {
+        userFileLocalDataSource.delete(codigo);
+    }
 }
