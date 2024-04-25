@@ -88,4 +88,9 @@ public class UserFileLocalDataSource {
         }
         saveList(newList);
     }
+
+    public void update(User user) {
+        delete(user.getCodigo());
+        save(user);
+    }
 }

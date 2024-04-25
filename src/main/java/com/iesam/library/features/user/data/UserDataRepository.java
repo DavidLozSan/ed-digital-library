@@ -34,7 +34,7 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public void update(String codigo) {
-        delete(codigo);
+    public void update(User user) {
+        userFileLocalDataSource.update(user);
     }
 }
