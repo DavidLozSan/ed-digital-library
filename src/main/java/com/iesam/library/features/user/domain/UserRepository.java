@@ -11,4 +11,5 @@ public interface UserRepository {
 
     void delete(String codigo);
 
+    void update(String codigo);
 }

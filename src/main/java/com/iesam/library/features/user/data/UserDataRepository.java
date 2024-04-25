@@ -32,4 +32,9 @@ public class UserDataRepository implements UserRepository {
     public void delete(String codigo) {
         userFileLocalDataSource.delete(codigo);
     }
+
+    @Override
+    public void update(String codigo) {
+        delete(codigo);
+    }
 }
