@@ -15,4 +15,9 @@ public class BookDataRepository implements BookRepository {
     public void save(Book book) {
         bookLocalDataSource.save(book);
     }
+
+    @Override
+    public Book obtain(String code) {
+        return bookLocalDataSource.findByCode(code);
+    }
 }
