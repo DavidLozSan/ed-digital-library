@@ -9,4 +9,7 @@ public interface UserRepository {
 
     User obtain(String codigo);
 
+    void delete(String codigo);
+
+    void update(User user);
 }

@@ -15,7 +15,8 @@ public class Main {
             System.out.println("1. Añadir usuario");
             System.out.println("2. Buscar usuario (por su código)");
             System.out.println("3. Mostrar todos los usuarios");
-            System.out.println("10. Añadir libro");
+            System.out.println("4. Borrar a un usuario");
+            System.out.println("5. Modificar a un usuario");
             System.out.println("0. Salir");
             System.out.println("\n---------------------------------");
             Integer opcion = sc.nextInt();
@@ -29,8 +30,11 @@ public class Main {
                 case 3:
                     UserPresentation.obtainUsers();
                     break;
-                case 10:
-                    BookPresentation.save();
+                case 4:
+                    UserPresentation.delete();
+                    break;
+                case 5:
+                    UserPresentation.update();
                     break;
                 case 0:
                     bucle = false;

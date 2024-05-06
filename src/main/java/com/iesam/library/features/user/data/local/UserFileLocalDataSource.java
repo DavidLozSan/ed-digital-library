@@ -82,10 +82,15 @@ public class UserFileLocalDataSource {
         List<User> newList = new ArrayList<>();
         List<User> models = findAll();
         for (User model : models) {
-            if (model.getCodigo() != modelCodigo) {
+            if (!model.getCodigo().equals(modelCodigo)) {
                 newList.add(model);
             }
         }
         saveList(newList);
+    }
+
+    public void update(User user) {
+        delete(user.getCodigo());
+        save(user);
     }
 }
