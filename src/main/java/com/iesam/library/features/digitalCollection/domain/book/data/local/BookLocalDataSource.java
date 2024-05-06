@@ -12,4 +12,6 @@ public interface BookLocalDataSource {
     List<Book> findAll();
 
     void delete(String code);
+
+    void update(Book book);
 }

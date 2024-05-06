@@ -88,4 +88,9 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         }
         saveList(newList);
     }
+
+    public void update(Book book) {
+        delete(book.getCode());
+        save(book);
+    }
 }
