@@ -1,8 +1,7 @@
 package com.iesam;
 
-import com.iesam.library.features.digitalCollection.domain.book.presentation.BookPresentation;
+import com.iesam.library.features.digitalCollection.presentation.DigitalCollectionPresentation;
 import com.iesam.library.features.user.presentation.UserPresentation;
-
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +12,8 @@ public class Main {
             System.out.println("\n---------------------------------");
             System.out.println("\nMenú:\n");
             System.out.println("1. Añadir usuario");
-            System.out.println("2. Buscar usuario (por su código)");
+            System.out.println("2. Acceder al menú de recursos digitales");
+            System.out.println("6. Buscar usuario (por su código)");
             System.out.println("3. Mostrar todos los usuarios");
             System.out.println("4. Borrar a un usuario");
             System.out.println("5. Modificar a un usuario");
@@ -25,6 +25,9 @@ public class Main {
                     UserPresentation.save();
                     break;
                 case 2:
+                    DigitalCollectionPresentation.digitalCollectionMenu();
+                    break;
+                case 6:
                     UserPresentation.obtain();
                     break;
                 case 3:
