@@ -1,34 +1,34 @@
 package com.iesam.library.features.digitalCollection.domain;
 
 public class DigitalCollection {
-    public final String codigo;
-    public final String tipoRecursoDigital;
-    public final String nombre;
+    public final String code;
+    public final String digitalResourceType;
+    public final String name;
 
-    public DigitalCollection(String codigo, String tipoRecursoDigital, String nombre) {
-        this.codigo = codigo;
-        this.tipoRecursoDigital = tipoRecursoDigital;
-        this.nombre = nombre;
+    public DigitalCollection(String code, String digitalResourceType, String name) {
+        this.code = code;
+        this.digitalResourceType = digitalResourceType;
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "DigitalCollection{" +
-                "codigo='" + codigo + '\'' +
-                ", tipoRecursoDigital='" + tipoRecursoDigital + '\'' +
-                ", nombre='" + nombre + '\'' +
+                "code='" + code + '\'' +
+                ", digitalResourceType='" + digitalResourceType + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
-    public String getTipoRecursoDigital() {
-        return tipoRecursoDigital;
+    public String getDigitalResourceType() {
+        return digitalResourceType;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 }

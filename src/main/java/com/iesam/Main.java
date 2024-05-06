@@ -1,8 +1,7 @@
 package com.iesam;
 
-import com.iesam.library.features.digitalCollection.presentation.BookPresentation;
+import com.iesam.library.features.digitalCollection.domain.book.presentation.BookPresentation;
 import com.iesam.library.features.user.presentation.UserPresentation;
-import com.iesam.library.features.user.domain.User;
 
 import java.util.Scanner;
 

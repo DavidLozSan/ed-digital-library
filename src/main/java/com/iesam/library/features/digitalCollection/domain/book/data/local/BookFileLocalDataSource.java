@@ -1,8 +1,8 @@
-package com.iesam.library.features.digitalCollection.data.local;
+package com.iesam.library.features.digitalCollection.domain.book.data.local;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.iesam.library.features.digitalCollection.domain.Book;
+import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,10 +45,10 @@ public class BookFileLocalDataSource {
         }
     }
 
-    public Book findByCodigo(String codigo) {
+    public Book findByCode(String code) {
         List<Book> models = findAll();
         for (Book model : models) {
-            if (Objects.equals(model.getCodigo(), codigo)) {
+            if (Objects.equals(model.getCode(), code)) {
                 return model;
             }
         }
@@ -78,11 +78,11 @@ public class BookFileLocalDataSource {
         return new ArrayList<>();
     }
 
-    public void delete(String modelCodigo) {
+    public void delete(String modelCode) {
         List<Book> newList = new ArrayList<>();
         List<Book> models = findAll();
         for (Book model : models) {
-            if (model.getCodigo() != modelCodigo) {
+            if (model.getCode() != modelCode) {
                 newList.add(model);
             }
         }

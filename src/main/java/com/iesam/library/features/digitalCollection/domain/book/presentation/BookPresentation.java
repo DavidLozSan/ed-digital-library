@@ -1,13 +1,33 @@
-package com.iesam.library.features.digitalCollection.presentation;
+package com.iesam.library.features.digitalCollection.domain.book.presentation;
 
-import com.iesam.library.features.digitalCollection.data.BookDataRepository;
-import com.iesam.library.features.digitalCollection.data.local.BookFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.Book;
-import com.iesam.library.features.digitalCollection.domain.SaveBookUseCase;
+import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
+import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
+import com.iesam.library.features.digitalCollection.domain.book.domain.SaveBookUseCase;
 
 import java.util.Scanner;
 
 public class BookPresentation {
+    public static void bookMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n---------------------------------");
+        System.out.println("\nMenú libros:\n");
+        System.out.println("1. Añadir libro");
+        System.out.println("0. Salir");
+        System.out.println("\n---------------------------------");
+        Integer option = sc.nextInt();
+        switch (option) {
+            case 1:
+                save();
+                break;
+            case 0:
+                System.out.println("Saliendo...");
+                break;
+            default:
+                System.out.println("Esa opción no es válida");
+                break;
+        }
+    }
     public static void save() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el codigo del libro");
