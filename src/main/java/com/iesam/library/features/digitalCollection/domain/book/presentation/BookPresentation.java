@@ -32,24 +32,24 @@ public class BookPresentation {
     public static void save() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el codigo del libro");
-        String codigo = sc.nextLine();
+        String code = sc.nextLine();
         System.out.println("Dame el título del libro");
-        String nombre = sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("Dame el autor del libro");
-        String autor = sc.nextLine();
+        String author = sc.nextLine();
         System.out.println("Dame el editorial del libro");
         String editorial = sc.nextLine();
         System.out.println("Dame el año de publicación del libro");
-        String anioPublicacion = sc.nextLine();
+        String yearOfPublication = sc.nextLine();
         System.out.println("Dame el numero de edición (si aplica) del libro");
-        String numeroEdicion = sc.nextLine();
+        String editionNumber = sc.nextLine();
         System.out.println("Dame el ISBN del libro");
         String iSBN = sc.nextLine();
         System.out.println("Dame el genero principal del libro");
-        String genero = sc.nextLine();
+        String genre = sc.nextLine();
         SaveBookUseCase saveBookUseCase = new SaveBookUseCase(new BookDataRepository(new BookFileLocalDataSource()));
         saveBookUseCase.execute(new Book(
-                codigo, "Libro digital", nombre, autor, editorial,
-                anioPublicacion, numeroEdicion, iSBN, genero));
+                code, "Libro digital", name, author, editorial,
+                yearOfPublication, editionNumber, iSBN, genre));
     }
 }
