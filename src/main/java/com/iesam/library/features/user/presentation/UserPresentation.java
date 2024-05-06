@@ -3,10 +3,47 @@ package com.iesam.library.features.user.presentation;
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.library.features.user.domain.*;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class UserPresentation {
+    public static void userMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n---------------------------------");
+        System.out.println("\nMenú usuarios:\n");
+        System.out.println("1. Añadir usuario");
+        System.out.println("2. Buscar usuario (por su código)");
+        System.out.println("3. Mostrar todos los usuarios");
+        System.out.println("4. Borrar a un usuario");
+        System.out.println("5. Modificar a un usuario");
+        System.out.println("\n---------------------------------");
+        Integer option = sc.nextInt();
+        switch (option) {
+            case 1:
+                save();
+                break;
+            case 2:
+                obtain();
+                break;
+            case 3:
+                obtainUsers();
+                break;
+            case 4:
+                delete();
+                break;
+            case 5:
+                update();
+                break;
+            case 0:
+                System.out.println("Saliendo...");
+                break;
+            default:
+                System.out.println("Esa opción no es válida");
+                break;
+        }
+    }
+
     public static void save() {
         SaveUserUseCase saveUserUseCase = new SaveUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         Scanner sc = new Scanner(System.in);
@@ -69,7 +106,7 @@ public class UserPresentation {
         String email = sc.nextLine();
         System.out.println("Dame el telefono del usuario");
         String telefono = sc.nextLine();
-        User user = new User(codigo,dni,nombre,apellidos,fechaExped,email,telefono);
+        User user = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
         UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(new UserDataRepository(new UserFileLocalDataSource()));
         updateUserUserCase.execute(user);
     }
