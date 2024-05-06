@@ -45,10 +45,10 @@ public class UserFileLocalDataSource {
         }
     }
 
-    public User findByCodigo(String codigo) {
+    public User findByCode(String code) {
         List<User> models = findAll();
         for (User model : models) {
-            if (Objects.equals(model.getCodigo(), codigo)) {
+            if (Objects.equals(model.getCode(), code)) {
                 return model;
             }
         }
@@ -78,11 +78,11 @@ public class UserFileLocalDataSource {
         return new ArrayList<>();
     }
 
-    public void delete(String modelCodigo) {
+    public void delete(String modelCode) {
         List<User> newList = new ArrayList<>();
         List<User> models = findAll();
         for (User model : models) {
-            if (!model.getCodigo().equals(modelCodigo)) {
+            if (!model.getCode().equals(modelCode)) {
                 newList.add(model);
             }
         }
@@ -90,7 +90,7 @@ public class UserFileLocalDataSource {
     }
 
     public void update(User user) {
-        delete(user.getCodigo());
+        delete(user.getCode());
         save(user);
     }
 }

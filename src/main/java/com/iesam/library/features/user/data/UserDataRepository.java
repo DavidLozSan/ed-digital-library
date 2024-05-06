@@ -24,13 +24,13 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public User obtain(String codigo) {
-        return userFileLocalDataSource.findByCodigo(codigo);
+    public User obtain(String code) {
+        return userFileLocalDataSource.findByCode(code);
     }
 
     @Override
-    public void delete(String codigo) {
-        userFileLocalDataSource.delete(codigo);
+    public void delete(String code) {
+        userFileLocalDataSource.delete(code);
     }
 
     @Override

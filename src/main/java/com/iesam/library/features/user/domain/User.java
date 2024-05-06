@@ -1,55 +1,55 @@
 package com.iesam.library.features.user.domain;
 
 public class User {
-    public final String codigo;
+    public final String code;
     public final String dni;
-    public final String nombre;
-    public final String apellidos;
-    public final String fechaExped;
+    public final String name;
+    public final String surnames;
+    public final String expeditionDate;
     public final String email;
-    public final String telefono;
+    public final String phone;
 
-    public User(String codigo, String dni, String nombre, String apellidos, String fechaExped, String email, String telefono) {
-        this.codigo = codigo;
+    public User(String code, String dni, String name, String surnames, String expeditionDate, String email, String phone) {
+        this.code = code;
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.fechaExped = fechaExped;
+        this.name = name;
+        this.surnames = surnames;
+        this.expeditionDate = expeditionDate;
         this.email = email;
-        this.telefono = telefono;
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
 
-        return "User{" + "codigo='" + codigo + '\'' + ", dni='" + dni + '\'' + ", nombre='" + nombre + '\'' + ", apellidos='" + apellidos + '\'' + ", fechaExped='" + fechaExped + '\'' + ", email='" + email + '\'' + ", telefono='" + telefono + '\'' + '}';
+        return "User{" + "code='" + code + '\'' + ", dni='" + dni + '\'' + ", name='" + name + '\'' + ", surnames='" + surnames + '\'' + ", expeditionDate='" + expeditionDate + '\'' + ", email='" + email + '\'' + ", phone='" + phone + '\'' + '}';
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
     public String getDni() {
         return dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getSurnames() {
+        return surnames;
     }
 
-    public String getFechaExped() {
-        return fechaExped;
+    public String getExpeditionDate() {
+        return expeditionDate;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getPhone() {
+        return phone;
     }
 }
