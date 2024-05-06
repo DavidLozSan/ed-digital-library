@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class UserFileLocalDataSource {
+public class UserFileLocalDataSource implements UserLocalDataSource {
 
     private String nameFile = "user.txt";
 

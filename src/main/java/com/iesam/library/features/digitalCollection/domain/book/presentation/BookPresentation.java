@@ -15,7 +15,7 @@ public class BookPresentation {
         System.out.println("1. Añadir libro");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
-        Integer option = sc.nextInt();
+        int option = sc.nextInt();
         switch (option) {
             case 1:
                 save();
@@ -47,7 +47,8 @@ public class BookPresentation {
         String iSBN = sc.nextLine();
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
-        SaveBookUseCase saveBookUseCase = new SaveBookUseCase(new BookDataRepository(new BookFileLocalDataSource()));
+        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        SaveBookUseCase saveBookUseCase = new SaveBookUseCase(bookDataRepository);
         saveBookUseCase.execute(new Book(
                 code, "Libro digital", name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre));

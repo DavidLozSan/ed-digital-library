@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class BookFileLocalDataSource {
+public class BookFileLocalDataSource implements BookLocalDataSource {
 
     private String nameFile = "book.txt";
 
