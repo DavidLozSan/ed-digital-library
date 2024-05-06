@@ -4,8 +4,10 @@ import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRep
 import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
 import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
 import com.iesam.library.features.digitalCollection.domain.book.domain.GetBookUseCase;
+import com.iesam.library.features.digitalCollection.domain.book.domain.GetBooksUseCase;
 import com.iesam.library.features.digitalCollection.domain.book.domain.SaveBookUseCase;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BookPresentation {
@@ -15,6 +17,7 @@ public class BookPresentation {
         System.out.println("\nMenú libros:\n");
         System.out.println("1. Añadir libro");
         System.out.println("2. Buscar libro");
+        System.out.println("3. Mostrar todos los libros");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
@@ -24,6 +27,9 @@ public class BookPresentation {
                 break;
             case 2:
                 obtain();
+                break;
+            case 3:
+                obtainBooks();
                 break;
             case 0:
                 System.out.println("Saliendo...");
@@ -67,5 +73,12 @@ public class BookPresentation {
         GetBookUseCase getBookUseCase = new GetBookUseCase(bookDataRepository);
         Book book = getBookUseCase.execute(code);
         System.out.println(book);
+    }
+
+    public static void obtainBooks() {
+        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        GetBooksUseCase getBooksUseCase = new GetBooksUseCase(bookDataRepository);
+        List<Book> books = getBooksUseCase.execute();
+        System.out.println(books);
     }
 }
