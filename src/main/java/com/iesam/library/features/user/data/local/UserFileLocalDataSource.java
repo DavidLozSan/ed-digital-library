@@ -64,6 +64,7 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
+                myReader.close();
                 return gson.fromJson(data, typeList);
             }
             myReader.close();
