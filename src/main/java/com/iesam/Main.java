@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Boolean loop = true;
+        boolean loop = true;
         Scanner sc = new Scanner(System.in);
         while (loop) {
             System.out.println("\n---------------------------------");
@@ -16,7 +16,7 @@ public class Main {
             System.out.println("2. Acceder al menú de recursos digitales");
             System.out.println("0. Salir");
             System.out.println("\n---------------------------------");
-            Integer option = sc.nextInt();
+            int option = sc.nextInt();
             switch (option) {
                 case 1:
                     UserPresentation.userMenu();
