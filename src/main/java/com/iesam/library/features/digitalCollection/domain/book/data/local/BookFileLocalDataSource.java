@@ -82,7 +82,7 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         List<Book> newList = new ArrayList<>();
         List<Book> models = findAll();
         for (Book model : models) {
-            if (model.getCode() != modelCode) {
+            if (!model.getCode().equals(modelCode)) {
                 newList.add(model);
             }
         }

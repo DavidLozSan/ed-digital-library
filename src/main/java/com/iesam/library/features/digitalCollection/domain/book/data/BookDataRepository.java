@@ -27,4 +27,9 @@ public class BookDataRepository implements BookRepository {
     public List<Book> obtainBooks() {
         return bookLocalDataSource.findAll();
     }
+
+    @Override
+    public void delete(String code) {
+        bookLocalDataSource.delete(code);
+    }
 }
