@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class BookFileLocalDataSource {
+public class BookFileLocalDataSource implements BookLocalDataSource {
 
     private String nameFile = "book.txt";
 
@@ -82,10 +82,15 @@ public class BookFileLocalDataSource {
         List<Book> newList = new ArrayList<>();
         List<Book> models = findAll();
         for (Book model : models) {
-            if (model.getCode() != modelCode) {
+            if (!model.getCode().equals(modelCode)) {
                 newList.add(model);
             }
         }
         saveList(newList);
+    }
+
+    public void update(Book book) {
+        delete(book.getCode());
+        save(book);
     }
 }

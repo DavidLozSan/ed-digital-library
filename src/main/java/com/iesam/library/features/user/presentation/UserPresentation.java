@@ -17,8 +17,9 @@ public class UserPresentation {
         System.out.println("3. Mostrar todos los usuarios");
         System.out.println("4. Borrar a un usuario");
         System.out.println("5. Modificar a un usuario");
+        System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
-        Integer option = sc.nextInt();
+        int option = sc.nextInt();
         switch (option) {
             case 1:
                 save();
@@ -45,69 +46,73 @@ public class UserPresentation {
     }
 
     public static void save() {
-        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(userDataRepository);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Dame el codigo del usuario");
-        String codigo = sc.nextLine();
+        System.out.println("Dame el código del usuario");
+        String code = sc.nextLine();
         System.out.println("Dame el dni del usuario");
         String dni = sc.nextLine();
         System.out.println("Dame el nombre del usuario");
-        String nombre = sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("Dame el apellidos del usuario");
-        String apellidos = sc.nextLine();
+        String surnames = sc.nextLine();
         System.out.println("Dame el fecha de expedición del usuario");
-        String fechaExped = sc.nextLine();
+        String expeditionDate = sc.nextLine();
         System.out.println("Dame el email del usuario");
         String email = sc.nextLine();
         System.out.println("Dame el telefono del usuario");
-        String telefono = sc.nextLine();
-        User user = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
+        String phone = sc.nextLine();
+        User user = new User(code, dni, name, surnames, expeditionDate, email, phone);
         saveUserUseCase.execute(user);
     }
 
 
     public static void obtainUsers() {
-        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(userDataRepository);
         List<User> users = getUsersUseCase.execute();
         System.out.println(users);
     }
 
     public static void obtain() {
-        GetUserUseCase getUserUseCase = new GetUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        GetUserUseCase getUserUseCase = new GetUserUseCase(userDataRepository);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Dame el codigo del usuario que quieres encontrar");
-        String codigo = sc.nextLine();
-        User user = getUserUseCase.execute(codigo);
+        System.out.println("Dame el código del usuario que quieres encontrar");
+        String code = sc.nextLine();
+        User user = getUserUseCase.execute(code);
         System.out.println(user);
     }
 
     public static void delete() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario a dar de baja");
-        String codigo = sc.nextLine();
-        DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(new UserDataRepository(
-                new UserFileLocalDataSource()));
-        deleteUserUseCase.execute(codigo);
+        String code = sc.nextLine();
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(userDataRepository);
+        deleteUserUseCase.execute(code);
     }
 
     public static void update() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario a modificar");
-        String codigo = sc.nextLine();
+        String code = sc.nextLine();
         System.out.println("Dame el dni del usuario");
         String dni = sc.nextLine();
         System.out.println("Dame el nombre del usuario");
-        String nombre = sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("Dame el apellidos del usuario");
-        String apellidos = sc.nextLine();
+        String surnames = sc.nextLine();
         System.out.println("Dame el fecha de expedición del usuario");
-        String fechaExped = sc.nextLine();
+        String expeditionDate = sc.nextLine();
         System.out.println("Dame el email del usuario");
         String email = sc.nextLine();
         System.out.println("Dame el telefono del usuario");
-        String telefono = sc.nextLine();
-        User user = new User(codigo, dni, nombre, apellidos, fechaExped, email, telefono);
-        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(new UserDataRepository(new UserFileLocalDataSource()));
+        String phone = sc.nextLine();
+        User user = new User(code, dni, name, surnames, expeditionDate, email, phone);
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(userDataRepository);
         updateUserUserCase.execute(user);
     }
 }

@@ -7,9 +7,9 @@ public interface UserRepository {
 
     List<User> obtainUsers();
 
-    User obtain(String codigo);
+    User obtain(String code);
 
-    void delete(String codigo);
+    void delete(String code);
 
     void update(User user);
 }
