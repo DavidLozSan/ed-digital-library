@@ -17,6 +17,7 @@ public class UserPresentation {
         System.out.println("3. Mostrar todos los usuarios");
         System.out.println("4. Borrar a un usuario");
         System.out.println("5. Modificar a un usuario");
+        System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
         switch (option) {
