@@ -16,6 +16,7 @@ public class BookPresentation {
         System.out.println("2. Buscar libro");
         System.out.println("3. Mostrar todos los libros");
         System.out.println("4. Dar de baja un libro");
+        System.out.println("5. Modificar la información de un libro");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
@@ -31,6 +32,9 @@ public class BookPresentation {
                 break;
             case 4:
                 delete();
+                break;
+            case 5:
+                update();
                 break;
             case 0:
                 System.out.println("Saliendo...");
@@ -90,5 +94,31 @@ public class BookPresentation {
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
         DeleteBookUseCase deleteBookUseCase = new DeleteBookUseCase(bookDataRepository);
         deleteBookUseCase.execute(code);
+    }
+
+    public static void update() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dame el código del libro a modificar");
+        String code = sc.nextLine();
+        System.out.println("Dame el título del libro");
+        String name = sc.nextLine();
+        System.out.println("Dame el autor del libro");
+        String author = sc.nextLine();
+        System.out.println("Dame el editorial del libro");
+        String editorial = sc.nextLine();
+        System.out.println("Dame el año de publicación del libro");
+        String yearOfPublication = sc.nextLine();
+        System.out.println("Dame el numero de edición (si aplica) del libro");
+        String editionNumber = sc.nextLine();
+        System.out.println("Dame el ISBN del libro");
+        String iSBN = sc.nextLine();
+        System.out.println("Dame el genero principal del libro");
+        String genre = sc.nextLine();
+        Book book = new Book(
+                code, "Libro digital", name, author, editorial,
+                yearOfPublication, editionNumber, iSBN, genre);
+        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(bookDataRepository);
+        updateBookUseCase.execute(book);
     }
 }

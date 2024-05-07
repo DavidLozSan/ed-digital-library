@@ -1,0 +1,1 @@
+[{"code":"001","userCode":"001","digitalResourceCode":"001","loanStartDate":"06/05/2024","loanEndDate":"27/05/2024","loanStatus":"activo"}]

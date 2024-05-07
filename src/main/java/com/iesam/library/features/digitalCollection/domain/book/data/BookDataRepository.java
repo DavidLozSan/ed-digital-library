@@ -32,4 +32,9 @@ public class BookDataRepository implements BookRepository {
     public void delete(String code) {
         bookLocalDataSource.delete(code);
     }
+
+    @Override
+    public void update(Book book) {
+        bookLocalDataSource.update(book);
+    }
 }

@@ -10,4 +10,6 @@ public interface BookRepository {
     List<Book> obtainBooks();
 
     void delete(String code);
+
+    void update(Book book);
 }
