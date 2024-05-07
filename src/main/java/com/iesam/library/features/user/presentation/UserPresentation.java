@@ -17,8 +17,9 @@ public class UserPresentation {
         System.out.println("3. Mostrar todos los usuarios");
         System.out.println("4. Borrar a un usuario");
         System.out.println("5. Modificar a un usuario");
+        System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
-        Integer option = sc.nextInt();
+        int option = sc.nextInt();
         switch (option) {
             case 1:
                 save();
@@ -45,7 +46,8 @@ public class UserPresentation {
     }
 
     public static void save() {
-        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(userDataRepository);
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario");
         String code = sc.nextLine();
@@ -67,13 +69,15 @@ public class UserPresentation {
 
 
     public static void obtainUsers() {
-        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        GetUsersUseCase getUsersUseCase = new GetUsersUseCase(userDataRepository);
         List<User> users = getUsersUseCase.execute();
         System.out.println(users);
     }
 
     public static void obtain() {
-        GetUserUseCase getUserUseCase = new GetUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        GetUserUseCase getUserUseCase = new GetUserUseCase(userDataRepository);
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario que quieres encontrar");
         String code = sc.nextLine();
@@ -85,8 +89,8 @@ public class UserPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario a dar de baja");
         String code = sc.nextLine();
-        DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(new UserDataRepository(
-                new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(userDataRepository);
         deleteUserUseCase.execute(code);
     }
 
@@ -107,7 +111,8 @@ public class UserPresentation {
         System.out.println("Dame el telefono del usuario");
         String phone = sc.nextLine();
         User user = new User(code, dni, name, surnames, expeditionDate, email, phone);
-        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(new UserDataRepository(new UserFileLocalDataSource()));
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(userDataRepository);
         updateUserUserCase.execute(user);
     }
 }
