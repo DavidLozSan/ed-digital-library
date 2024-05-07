@@ -4,6 +4,8 @@ import com.iesam.library.features.digitalCollection.domain.book.data.local.BookL
 import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
 import com.iesam.library.features.digitalCollection.domain.book.domain.BookRepository;
 
+import java.util.List;
+
 public class BookDataRepository implements BookRepository {
     private final BookLocalDataSource bookLocalDataSource;
 
@@ -19,5 +21,20 @@ public class BookDataRepository implements BookRepository {
     @Override
     public Book obtain(String code) {
         return bookLocalDataSource.findByCode(code);
+    }
+
+    @Override
+    public List<Book> obtainBooks() {
+        return bookLocalDataSource.findAll();
+    }
+
+    @Override
+    public void delete(String code) {
+        bookLocalDataSource.delete(code);
+    }
+
+    @Override
+    public void update(Book book) {
+        bookLocalDataSource.update(book);
     }
 }
