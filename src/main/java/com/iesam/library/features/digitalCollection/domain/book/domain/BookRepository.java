@@ -8,4 +8,8 @@ public interface BookRepository {
     Book obtain(String code);
 
     List<Book> obtainBooks();
+
+    void delete(String code);
+
+    void update(Book book);
 }

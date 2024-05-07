@@ -10,4 +10,8 @@ public interface BookLocalDataSource {
     Book findByCode(String code);
 
     List<Book> findAll();
+
+    void delete(String code);
+
+    void update(Book book);
 }
