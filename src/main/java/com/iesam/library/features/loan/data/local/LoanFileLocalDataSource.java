@@ -1,8 +1,8 @@
-package com.iesam.library.features.user.data.local;
+package com.iesam.library.features.loan.data.local;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.iesam.library.features.user.domain.User;
+import com.iesam.library.features.loan.domain.Loan;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,26 +14,26 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class UserFileLocalDataSource implements UserLocalDataSource {
+public class LoanFileLocalDataSource implements LoanLocalDataSource {
 
-    private String nameFile = "user.txt";
+    private String nameFile = "loan.txt";
 
     private Gson gson = new Gson();
 
-    private final Type typeList = new TypeToken<ArrayList<User>>() {
+    private final Type typeList = new TypeToken<ArrayList<Loan>>() {
     }.getType();
 
-    public void save(User model) {
-        List<User> models = findAll();
+    public void save(Loan model) {
+        List<Loan> models = findAll();
         models.add(model);
         saveToFile(models);
     }
 
-    public void saveList(List<User> models) {
+    public void saveList(List<Loan> models) {
         saveToFile(models);
     }
 
-    private void saveToFile(List<User> models) {
+    private void saveToFile(List<Loan> models) {
         try {
             FileWriter myWriter = new FileWriter(nameFile);
             myWriter.write(gson.toJson(models));
@@ -45,9 +45,9 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
         }
     }
 
-    public User findByCode(String code) {
-        List<User> models = findAll();
-        for (User model : models) {
+    public Loan findByCode(String code) {
+        List<Loan> models = findAll();
+        for (Loan model : models) {
             if (Objects.equals(model.getCode(), code)) {
                 return model;
             }
@@ -55,7 +55,7 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
         return null;
     }
 
-    public List<User> findAll() {
+    public List<Loan> findAll() {
         try {
             File myObj = new File(nameFile);
             if (!myObj.exists()) {
@@ -79,9 +79,9 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
     }
 
     public void delete(String modelCode) {
-        List<User> newList = new ArrayList<>();
-        List<User> models = findAll();
-        for (User model : models) {
+        List<Loan> newList = new ArrayList<>();
+        List<Loan> models = findAll();
+        for (Loan model : models) {
             if (!model.getCode().equals(modelCode)) {
                 newList.add(model);
             }
@@ -89,8 +89,8 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
         saveList(newList);
     }
 
-    public void update(User user) {
-        delete(user.getCode());
-        save(user);
+    public void update(Loan loan) {
+        delete(loan.getCode());
+        save(loan);
     }
 }

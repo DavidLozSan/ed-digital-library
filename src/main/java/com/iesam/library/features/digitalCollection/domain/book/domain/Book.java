@@ -23,7 +23,10 @@ public class Book extends DigitalCollection {
     @Override
     public String toString() {
         return "Book{" +
-                "author='" + author + '\'' +
+                "code='" + code + '\'' +
+                ", digitalResourceType='" + digitalResourceType + '\'' +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
                 ", editorial='" + editorial + '\'' +
                 ", yearOfPublication='" + yearOfPublication + '\'' +
                 ", editionNumber='" + editionNumber + '\'' +

@@ -7,7 +7,7 @@ public class GetUserUseCase {
         this.userRepository = userRepository;
     }
 
-    public User execute(String codigo) {
-        return userRepository.obtain(codigo);
+    public User execute(String code) {
+        return userRepository.obtain(code);
     }
 }
