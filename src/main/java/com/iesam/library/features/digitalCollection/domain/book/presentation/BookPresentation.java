@@ -1,5 +1,9 @@
 package com.iesam.library.features.digitalCollection.domain.book.presentation;
 
+import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
+import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
 import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
 import com.iesam.library.features.digitalCollection.domain.book.domain.*;
@@ -64,9 +68,10 @@ public class BookPresentation {
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        SaveBookUseCase saveBookUseCase = new SaveBookUseCase(bookDataRepository);
+        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
+        SaveBookUseCase saveBookUseCase = new SaveBookUseCase(bookDataRepository, digitalDataRepository);
         saveBookUseCase.execute(new Book(
-                code, "Libro digital", name, author, editorial,
+                code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre));
     }
 
@@ -115,7 +120,7 @@ public class BookPresentation {
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
         Book book = new Book(
-                code, "Libro digital", name, author, editorial,
+                code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre);
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
         UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(bookDataRepository);
