@@ -1,35 +1,38 @@
 package com.iesam.library.features.loan.domain;
 
+import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.user.domain.User;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Loan {
     public final String code;
-    public final String userCode;
-    public final String digitalResourceCode;
+    public final User user;
+    public final DigitalCollection digitalCollection;
     public final String loanStartDate;
     public final String loanEndDate;
     public final String loanStatus;
 
-    public Loan(String code, String userCode, String digitalResourceCode, String loanStartDate, String loanEndDate, String loanStatus) {
+    public Loan(String code, User user, DigitalCollection digitalCollection) {
         this.code = code;
-        this.userCode = userCode;
-        this.digitalResourceCode = digitalResourceCode;
-        this.loanStartDate = loanStartDate;
-        this.loanEndDate = loanEndDate;
-        this.loanStatus = loanStatus;
+        this.user = user;
+        this.digitalCollection = digitalCollection;
+        this.loanStartDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.loanEndDate = LocalDate.now().plusDays(21).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.loanStatus = "Activo";
     }
 
     public String getCode() {
         return code;
     }
 
-    public String getUserCode() {
-        return userCode;
+    public User getUser() {
+        return user;
     }
 
-    public String getDigitalResourceCode() {
-        return digitalResourceCode;
+    public DigitalCollection getDigitalCollection() {
+        return digitalCollection;
     }
 
     public String getLoanStartDate() {

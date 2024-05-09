@@ -1,6 +1,7 @@
 package com.iesam.library.features.digitalCollection.domain.book.domain;
 
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.TypeDigitalCollection;
 
 public class Book extends DigitalCollection {
     public final String author;
@@ -10,8 +11,8 @@ public class Book extends DigitalCollection {
     public final String iSBN;
     public final String genre;
 
-    public Book(String code, String digitalResourceType, String name, String author, String editorial, String yearOfPublication, String editionNumber, String iSBN, String genre) {
-        super(code, digitalResourceType, name);
+    public Book(String code, String name, String author, String editorial, String yearOfPublication, String editionNumber, String iSBN, String genre) {
+        super(code, TypeDigitalCollection.BOOK, name);
         this.author = author;
         this.editorial = editorial;
         this.yearOfPublication = yearOfPublication;

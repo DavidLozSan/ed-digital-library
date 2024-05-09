@@ -2,10 +2,10 @@ package com.iesam.library.features.digitalCollection.domain;
 
 public class DigitalCollection {
     public final String code;
-    public final String digitalResourceType;
+    public final TypeDigitalCollection digitalResourceType;
     public final String name;
 
-    public DigitalCollection(String code, String digitalResourceType, String name) {
+    public DigitalCollection(String code, TypeDigitalCollection digitalResourceType, String name) {
         this.code = code;
         this.digitalResourceType = digitalResourceType;
         this.name = name;
@@ -24,7 +24,7 @@ public class DigitalCollection {
         return code;
     }
 
-    public String getDigitalResourceType() {
+    public TypeDigitalCollection getDigitalResourceType() {
         return digitalResourceType;
     }
 
