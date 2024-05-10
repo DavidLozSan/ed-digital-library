@@ -28,4 +28,9 @@ public class LoanDataRepository implements LoanRepository {
     public List<Loan> unfinishedLoans() {
         return loanLocalDataSource.unfinishedLoans();
     }
+
+    @Override
+    public List<Loan> finalizedLoans() {
+        return loanLocalDataSource.finalizedLoans();
+    }
 }

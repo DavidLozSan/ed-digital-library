@@ -10,4 +10,6 @@ public interface LoanLocalDataSource {
     void delete(String code);
 
     List<Loan> unfinishedLoans();
+
+    List<Loan> finalizedLoans();
 }
