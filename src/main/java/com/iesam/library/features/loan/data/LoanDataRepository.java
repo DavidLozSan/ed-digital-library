@@ -16,4 +16,9 @@ public class LoanDataRepository implements LoanRepository {
     public void save(Loan loan) {
         loanLocalDataSource.save(loan);
     }
+
+    @Override
+    public void delete(String code) {
+        loanLocalDataSource.delete(code);
+    }
 }
