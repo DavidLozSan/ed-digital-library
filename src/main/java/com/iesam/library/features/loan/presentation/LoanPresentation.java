@@ -1,10 +1,19 @@
 package com.iesam.library.features.loan.presentation;
 
+import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
+import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
+import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
+import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
 import com.iesam.library.features.loan.data.LoanDataRepository;
 import com.iesam.library.features.loan.data.local.LoanFileLocalDataSource;
 import com.iesam.library.features.loan.domain.*;
+import com.iesam.library.features.user.data.UserDataRepository;
+import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.library.features.user.data.local.UserLocalDataSource;
 import com.iesam.library.features.user.domain.User;
+import com.iesam.library.features.user.domain.UserRepository;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -15,6 +24,7 @@ public class LoanPresentation {
         System.out.println("\n---------------------------------");
         System.out.println("\nMenú préstamos:\n");
         System.out.println("1. Solicitar préstamo");
+        System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
         switch (option) {
@@ -38,13 +48,12 @@ public class LoanPresentation {
         String userCode = sc.nextLine();
         System.out.println("Dame el código del recurso digital");
         String digitalResourceCode = sc.nextLine();
-        Loan loan = new Loan(code, null, null);
-        System.out.println("La fecha de inicio del préstamo: " + loan.loanStartDate);
-        System.out.println("La fecha límite del préstamo: " + loan.loanEndDate);
-        System.out.println("El estado del préstamo: " + loan.loanStatus);
         LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
-        SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository);
-        saveLoanUseCase.execute(loan);
-        //saveLoanUseCase.execute(loan, userCode, digitalResourceCode);
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
+        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository, userDataRepository,
+                digitalDataRepository, bookDataRepository);
+        saveLoanUseCase.execute(code, userCode, digitalResourceCode);
     }
 }
