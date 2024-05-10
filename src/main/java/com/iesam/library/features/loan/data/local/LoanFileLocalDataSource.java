@@ -89,6 +89,18 @@ public class LoanFileLocalDataSource implements LoanLocalDataSource {
         saveList(newList);
     }
 
+    @Override
+    public List<Loan> unfinishedLoans() {
+        List<Loan> newList = new ArrayList<>();
+        List<Loan> models = findAll();
+        for (Loan model : models) {
+            if (model.loanStatus.equals("Activo")) {
+                newList.add(model);
+            }
+        }
+        return newList;
+    }
+
     public void update(Loan loan) {
         delete(loan.getCode());
         save(loan);

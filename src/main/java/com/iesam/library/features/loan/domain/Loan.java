@@ -23,6 +23,18 @@ public class Loan {
         this.loanStatus = "Activo";
     }
 
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "code='" + code + '\'' +
+                ", user=" + user +
+                ", digitalCollection=" + digitalCollection +
+                ", loanStartDate='" + loanStartDate + '\'' +
+                ", loanEndDate='" + loanEndDate + '\'' +
+                ", loanStatus='" + loanStatus + '\'' +
+                '}';
+    }
+
     public String getCode() {
         return code;
     }
