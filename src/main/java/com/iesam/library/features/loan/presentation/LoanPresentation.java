@@ -23,6 +23,7 @@ public class LoanPresentation {
         System.out.println("2. Eliminar préstamo");
         System.out.println("3. Consultar préstamos sin finalizar");
         System.out.println("4. Consultar préstamos finalizados");
+        System.out.println("5. Finalizar préstamo");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
@@ -38,6 +39,9 @@ public class LoanPresentation {
                 break;
             case 4:
                 finalizedLoans();
+                break;
+            case 5:
+                finalizeLoan();
                 break;
             case 0:
                 System.out.println("Saliendo...");
@@ -88,5 +92,14 @@ public class LoanPresentation {
         GetFinalizedLoansUseCase getFinalizedLoansUseCase = new GetFinalizedLoansUseCase(loanDataRepository);
         List<Loan> loans = getFinalizedLoansUseCase.execute();
         System.out.println(loans);
+    }
+
+    public static void finalizeLoan() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dame el código de préstamo para finalizar");
+        String code = sc.nextLine();
+        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
+        FinalizeLoanUseCase finalizeLoanUseCase = new FinalizeLoanUseCase(loanDataRepository);
+        finalizeLoanUseCase.execute(code);
     }
 }

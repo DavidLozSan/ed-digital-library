@@ -113,6 +113,13 @@ public class LoanFileLocalDataSource implements LoanLocalDataSource {
         return newList;
     }
 
+    @Override
+    public void finalizeLoan(String code) {
+        Loan loan = findByCode(code);
+        delete(loan.code);
+        save(new Loan(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate, loan.loanEndDate));
+    }
+
     public void update(Loan loan) {
         delete(loan.getCode());
         save(loan);

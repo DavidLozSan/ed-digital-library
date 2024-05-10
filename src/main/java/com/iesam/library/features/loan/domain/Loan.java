@@ -23,6 +23,15 @@ public class Loan {
         this.loanStatus = "Activo";
     }
 
+    public Loan(String code, User user, DigitalCollection digitalCollection, String loanStartDate, String loanEndDate) {
+        this.code = code;
+        this.user = user;
+        this.digitalCollection = digitalCollection;
+        this.loanStartDate = loanStartDate;
+        this.loanEndDate = loanEndDate;
+        this.loanStatus = "Finalizado";
+    }
+
     @Override
     public String toString() {
         return "Loan{" +
