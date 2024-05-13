@@ -27,7 +27,7 @@ class GetUserUseCaseTest {
     }
 
     @Test
-    public void GetACodeValidThenReturnAUser() {
+    public void getACodeValidThenReturnAUser() {
         User userExpected = new User("055", "100", "David", "Apellidos",
                 "13/05/2024", "david@correo.es", "777888999");
         Mockito.when(userRepository.obtain("055")).thenReturn(userExpected);
@@ -44,7 +44,7 @@ class GetUserUseCaseTest {
     }
 
     @Test
-    public void GetAnInvalidCodeAndThenReturnANull() {
+    public void getAnInvalidCodeAndThenReturnANull() {
         Mockito.when(userRepository.obtain("055")).thenReturn(null);
 
         User userReceived = getUserUseCase.execute("055");
