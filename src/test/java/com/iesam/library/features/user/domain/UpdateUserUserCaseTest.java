@@ -36,24 +36,4 @@ class UpdateUserUserCaseTest {
 
         Mockito.verify(userRepository, Mockito.times(1)).update(user);
     }
-
-    @Test
-    public void givenAnExistingUserWithNewInformationThenYourInformationIsModified() {
-        User existingUser = new User("044", "77788899A", "David", "Apellidos",
-                "13/05/2024", "david@correo.es", "777888999");
-        User modifiedUser = new User("044", "77788899A", "Juan", "Apellidos",
-                "13/05/2024", "juan@correo.es", "555222333");
-        Mockito.when(userRepository.obtain(existingUser.code)).thenReturn(modifiedUser);
-
-        updateUserUserCase.execute(modifiedUser);
-        userRepository.obtain(existingUser.code);
-
-        Assertions.assertEquals(modifiedUser.code, "044");
-        Assertions.assertEquals(modifiedUser.dni, "77788899A");
-        Assertions.assertEquals(modifiedUser.name, "Juan");
-        Assertions.assertEquals(modifiedUser.surnames, "Apellidos");
-        Assertions.assertEquals(modifiedUser.expeditionDate, "13/05/2024");
-        Assertions.assertEquals(modifiedUser.email, "juan@correo.es");
-        Assertions.assertEquals(modifiedUser.phone, "555222333");
-    }
 }
