@@ -114,8 +114,7 @@ public class LoanFileLocalDataSource implements LoanLocalDataSource {
     }
 
     @Override
-    public void finalizeLoan(String code) {
-        Loan loan = findByCode(code);
+    public void finalizeLoan(Loan loan) {
         delete(loan.code);
         save(new Loan(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate, loan.loanEndDate));
     }

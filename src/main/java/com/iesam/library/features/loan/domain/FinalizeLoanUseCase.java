@@ -8,6 +8,8 @@ public class FinalizeLoanUseCase {
     }
 
     public void execute(String code) {
-        this.loanRepository.finalizeLoan(code);
+        Loan loan = loanRepository.obtainLoan(code);
+        this.loanRepository.finalizeLoan(new Loan(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
+                loan.loanEndDate));
     }
 }

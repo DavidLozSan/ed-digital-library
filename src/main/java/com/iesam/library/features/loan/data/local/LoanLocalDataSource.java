@@ -13,7 +13,7 @@ public interface LoanLocalDataSource {
 
     List<Loan> finalizedLoans();
 
-    void finalizeLoan(String code);
+    void finalizeLoan(Loan loan);
 
     Loan findByCode(String code);
 }
