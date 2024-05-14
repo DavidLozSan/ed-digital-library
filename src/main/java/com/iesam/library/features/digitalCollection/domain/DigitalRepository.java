@@ -8,4 +8,8 @@ public interface DigitalRepository {
     DigitalCollection obtain(String digitalResourceCode);
 
     List<DigitalCollection> obtainDigitalResources();
+
+    void delete(String code);
+
+    void update(DigitalCollection digitalCollection);
 }

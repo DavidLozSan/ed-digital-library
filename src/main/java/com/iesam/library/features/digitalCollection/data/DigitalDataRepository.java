@@ -27,4 +27,14 @@ public class DigitalDataRepository implements DigitalRepository {
     public List<DigitalCollection> obtainDigitalResources() {
         return digitalLocalDataSource.findAll();
     }
+
+    @Override
+    public void delete(String code) {
+        digitalLocalDataSource.delete(code);
+    }
+
+    @Override
+    public void update(DigitalCollection digitalCollection) {
+        digitalLocalDataSource.update(digitalCollection);
+    }
 }

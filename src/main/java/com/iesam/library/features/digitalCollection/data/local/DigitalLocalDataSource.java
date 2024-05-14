@@ -10,4 +10,8 @@ public interface DigitalLocalDataSource {
     void save(DigitalCollection digitalCollection);
 
     List<DigitalCollection> findAll();
+
+    void delete(String modelCode);
+
+    void update(DigitalCollection digital);
 }

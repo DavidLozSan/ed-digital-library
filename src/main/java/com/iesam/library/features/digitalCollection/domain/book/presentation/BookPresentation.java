@@ -97,7 +97,8 @@ public class BookPresentation {
         System.out.println("Dame el código del libro");
         String code = sc.nextLine();
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        DeleteBookUseCase deleteBookUseCase = new DeleteBookUseCase(bookDataRepository);
+        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
+        DeleteBookUseCase deleteBookUseCase = new DeleteBookUseCase(bookDataRepository, digitalDataRepository);
         deleteBookUseCase.execute(code);
     }
 
@@ -123,7 +124,8 @@ public class BookPresentation {
                 code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre);
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(bookDataRepository);
+        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
+        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(bookDataRepository, digitalDataRepository);
         updateBookUseCase.execute(book);
     }
 }
