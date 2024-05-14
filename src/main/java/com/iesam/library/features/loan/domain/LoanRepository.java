@@ -12,4 +12,6 @@ public interface LoanRepository {
     List<Loan> finalizedLoans();
 
     void finalizeLoan(String code);
+
+    Loan obtainLoan(String code);
 }

@@ -38,4 +38,9 @@ public class LoanDataRepository implements LoanRepository {
     public void finalizeLoan(String code) {
         loanLocalDataSource.finalizeLoan(code);
     }
+
+    @Override
+    public Loan obtainLoan(String code) {
+        return loanLocalDataSource.findByCode(code);
+    }
 }
