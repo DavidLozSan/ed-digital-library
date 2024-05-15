@@ -2,7 +2,6 @@ package com.iesam.library.features.digitalCollection.domain.book.domain;
 
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
-import com.iesam.library.features.digitalCollection.domain.TypeDigitalCollection;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
