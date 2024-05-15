@@ -1,7 +1,4 @@
-package com.iesam.library.features.digitalCollection.domain.book;
-
-import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
-import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
+package com.iesam.library.features.digitalCollection.domain;
 
 public class UpdateDigitalResourceUseCase {
     public final DigitalRepository digitalRepository;
