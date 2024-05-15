@@ -11,6 +11,7 @@ import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class LoanPresentation {
@@ -20,6 +21,7 @@ public class LoanPresentation {
         System.out.println("\nMenú préstamos:\n");
         System.out.println("1. Solicitar préstamo");
         System.out.println("2. Eliminar préstamo");
+        System.out.println("3. Consultar préstamos sin finalizar");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
@@ -29,6 +31,9 @@ public class LoanPresentation {
                 break;
             case 2:
                 delete();
+                break;
+            case 3:
+                unfinishedLoans();
                 break;
             case 0:
                 System.out.println("Saliendo...");
@@ -63,5 +68,13 @@ public class LoanPresentation {
         LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         DeleteLoanUseCase deleteLoanUseCase = new DeleteLoanUseCase(loanDataRepository);
         deleteLoanUseCase.execute(code);
+    }
+
+    public static void unfinishedLoans() {
+        System.out.println("El listado de préstamos sin finalizar: ");
+        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
+        GetUnfinishedLoansUseCase getUnfinishedLoansUseCase = new GetUnfinishedLoansUseCase(loanDataRepository);
+        List<Loan> loans = getUnfinishedLoansUseCase.execute();
+        System.out.println(loans);
     }
 }
