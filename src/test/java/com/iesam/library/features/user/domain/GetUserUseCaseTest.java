@@ -34,13 +34,13 @@ class GetUserUseCaseTest {
 
         User userReceived = getUserUseCase.execute("055");
 
-        Assertions.assertEquals(userExpected.code, "055");
-        Assertions.assertEquals(userExpected.dni, "100");
-        Assertions.assertEquals(userExpected.name, "David");
-        Assertions.assertEquals(userExpected.surnames, "Apellidos");
-        Assertions.assertEquals(userExpected.expeditionDate, "13/05/2024");
-        Assertions.assertEquals(userExpected.email, "david@correo.es");
-        Assertions.assertEquals(userExpected.phone, "777888999");
+        Assertions.assertEquals(userReceived.code, "055");
+        Assertions.assertEquals(userReceived.dni, "100");
+        Assertions.assertEquals(userReceived.name, "David");
+        Assertions.assertEquals(userReceived.surnames, "Apellidos");
+        Assertions.assertEquals(userReceived.expeditionDate, "13/05/2024");
+        Assertions.assertEquals(userReceived.email, "david@correo.es");
+        Assertions.assertEquals(userReceived.phone, "777888999");
     }
 
     @Test
