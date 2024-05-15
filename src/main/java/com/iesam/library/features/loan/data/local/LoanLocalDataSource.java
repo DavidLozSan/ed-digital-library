@@ -12,4 +12,8 @@ public interface LoanLocalDataSource {
     List<Loan> unfinishedLoans();
 
     List<Loan> finalizedLoans();
+
+    void finalizeLoan(Loan loan);
+
+    Loan findByCode(String code);
 }

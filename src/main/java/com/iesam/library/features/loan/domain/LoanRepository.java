@@ -10,4 +10,8 @@ public interface LoanRepository {
     List<Loan> unfinishedLoans();
 
     List<Loan> finalizedLoans();
+
+    void finalizeLoan(Loan loan);
+
+    Loan obtainLoan(String code);
 }

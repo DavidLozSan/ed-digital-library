@@ -33,4 +33,14 @@ public class LoanDataRepository implements LoanRepository {
     public List<Loan> finalizedLoans() {
         return loanLocalDataSource.finalizedLoans();
     }
+
+    @Override
+    public void finalizeLoan(Loan loan) {
+        loanLocalDataSource.finalizeLoan(loan);
+    }
+
+    @Override
+    public Loan obtainLoan(String code) {
+        return loanLocalDataSource.findByCode(code);
+    }
 }
