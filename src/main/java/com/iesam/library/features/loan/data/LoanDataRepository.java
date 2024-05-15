@@ -35,26 +35,6 @@ public class LoanDataRepository implements LoanRepository {
     }
 
     @Override
-    public void finalizeLoan(String code) {
-        loanLocalDataSource.finalizeLoan(code);
-    }
-
-    @Override
-    public void delete(String code) {
-        loanLocalDataSource.delete(code);
-    }
-
-    @Override
-    public List<Loan> unfinishedLoans() {
-        return loanLocalDataSource.unfinishedLoans();
-    }
-
-    @Override
-    public List<Loan> finalizedLoans() {
-        return loanLocalDataSource.finalizedLoans();
-    }
-
-    @Override
     public void finalizeLoan(Loan loan) {
         loanLocalDataSource.finalizeLoan(loan);
     }
