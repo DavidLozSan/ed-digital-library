@@ -8,4 +8,6 @@ public interface LoanRepository {
     void delete(String code);
 
     List<Loan> unfinishedLoans();
+
+    List<Loan> finalizedLoans();
 }
