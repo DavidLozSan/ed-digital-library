@@ -19,4 +19,18 @@ public class Music extends DigitalCollection {
         this.genre = genre;
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "code='" + code + '\'' +
+                ", digitalResourceType=" + digitalResourceType +
+                ", name='" + name + '\'' +
+                "artist='" + artist + '\'' +
+                ", album='" + album + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
+                ", genre='" + genre + '\'' +
+                ", duration='" + duration + '\'' +
+                '}';
+    }
 }

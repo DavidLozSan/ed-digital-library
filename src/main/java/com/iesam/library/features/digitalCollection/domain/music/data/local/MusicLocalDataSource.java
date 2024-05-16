@@ -4,4 +4,6 @@ import com.iesam.library.features.digitalCollection.domain.music.domain.Music;
 
 public interface MusicLocalDataSource {
     void save(Music music);
+
+    Music findByCode(String code);
 }

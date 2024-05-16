@@ -15,4 +15,9 @@ public class MusicDataRepository implements MusicRepository {
     public void saveMusic(Music music) {
         musicLocalDataSource.save(music);
     }
+
+    @Override
+    public Music obtainMusic(String code) {
+        return musicLocalDataSource.findByCode(code);
+    }
 }

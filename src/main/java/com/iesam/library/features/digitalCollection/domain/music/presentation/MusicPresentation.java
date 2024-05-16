@@ -4,6 +4,7 @@ import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
 import com.iesam.library.features.digitalCollection.domain.music.data.MusicDataRepository;
 import com.iesam.library.features.digitalCollection.domain.music.data.local.MusicFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.music.domain.GetMusicUseCase;
 import com.iesam.library.features.digitalCollection.domain.music.domain.Music;
 import com.iesam.library.features.digitalCollection.domain.music.domain.SaveMusicUseCase;
 
@@ -16,6 +17,7 @@ public class MusicPresentation {
         System.out.println("\n---------------------------------");
         System.out.println("\nMenú música:\n");
         System.out.println("1. Añadir música");
+        System.out.println("2. Mostrar la informacion de una música");
         System.out.println("0. Salir");
         System.out.println("\n---------------------------------");
         int option = sc.nextInt();
@@ -23,6 +25,8 @@ public class MusicPresentation {
             case 1:
                 save();
                 break;
+            case 2:
+                obtain();
             case 0:
                 System.out.println("Saliendo...");
                 break;
@@ -52,5 +56,15 @@ public class MusicPresentation {
         DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
         SaveMusicUseCase saveMusicUseCase = new SaveMusicUseCase(musicDataRepository, digitalDataRepository);
         saveMusicUseCase.execute(new Music(code, name, artist, album, releaseYear, genre, duration));
+    }
+
+    public static void obtain() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dame el código de la música a mostrar");
+        String code = sc.nextLine();
+        MusicDataRepository musicDataRepository = new MusicDataRepository(new MusicFileLocalDataSource());
+        GetMusicUseCase getMusicUseCase = new GetMusicUseCase(musicDataRepository);
+        Music music = getMusicUseCase.execute(code);
+        System.out.println(music);
     }
 }
