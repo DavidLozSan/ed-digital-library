@@ -4,6 +4,8 @@ import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
 import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
 import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.music.data.MusicDataRepository;
+import com.iesam.library.features.digitalCollection.domain.music.data.local.MusicFileLocalDataSource;
 import com.iesam.library.features.loan.data.LoanDataRepository;
 import com.iesam.library.features.loan.data.local.LoanFileLocalDataSource;
 import com.iesam.library.features.loan.domain.*;
@@ -68,8 +70,9 @@ public class LoanPresentation {
         UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
         DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        MusicDataRepository musicDataRepository = new MusicDataRepository(new MusicFileLocalDataSource());
         SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository, userDataRepository,
-                digitalDataRepository, bookDataRepository);
+                digitalDataRepository, bookDataRepository, musicDataRepository);
         saveLoanUseCase.execute(code, userCode, digitalResourceCode);
     }
 
