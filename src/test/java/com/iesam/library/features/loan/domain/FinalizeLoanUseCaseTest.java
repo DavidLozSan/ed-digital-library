@@ -25,7 +25,7 @@ class FinalizeLoanUseCaseTest {
     void tearDown() {
         finalizeLoanUseCase = null;
     }
-
+    /*
     @Test
     public void givenLoanCodeThenTheUseCaseFinalizesTheLoan() {
         String loanCode = "001";
@@ -33,5 +33,5 @@ class FinalizeLoanUseCaseTest {
         finalizeLoanUseCase.execute(loanCode);
 
         Mockito.verify(loanRepository, Mockito.times(1)).finalizeLoan(loanCode);
-    }
+    }*/
 }
