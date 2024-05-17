@@ -1,5 +1,7 @@
 package com.iesam.library.features.digitalCollection.domain.book.domain;
 
+import com.iesam.library.features.digitalCollection.book.domain.BookRepository;
+import com.iesam.library.features.digitalCollection.book.domain.DeleteBookUseCase;
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class DeleteBookUseCaseTest {

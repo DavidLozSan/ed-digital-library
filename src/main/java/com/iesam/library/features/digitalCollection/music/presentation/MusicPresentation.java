@@ -1,12 +1,12 @@
-package com.iesam.library.features.digitalCollection.domain.music.presentation;
+package com.iesam.library.features.digitalCollection.music.presentation;
 
 import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.music.data.MusicDataRepository;
-import com.iesam.library.features.digitalCollection.domain.music.data.local.MusicFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.music.domain.GetMusicUseCase;
-import com.iesam.library.features.digitalCollection.domain.music.domain.Music;
-import com.iesam.library.features.digitalCollection.domain.music.domain.SaveMusicUseCase;
+import com.iesam.library.features.digitalCollection.music.data.MusicDataRepository;
+import com.iesam.library.features.digitalCollection.music.data.local.MusicFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.music.domain.GetMusicUseCase;
+import com.iesam.library.features.digitalCollection.music.domain.Music;
+import com.iesam.library.features.digitalCollection.music.domain.SaveMusicUseCase;
 
 import java.util.Scanner;
 
@@ -54,8 +54,9 @@ public class MusicPresentation {
         String duration = sc.nextLine();
         MusicDataRepository musicDataRepository = new MusicDataRepository(new MusicFileLocalDataSource());
         DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        SaveMusicUseCase saveMusicUseCase = new SaveMusicUseCase(musicDataRepository, digitalDataRepository);
-        saveMusicUseCase.execute(new Music(code, name, artist, album, releaseYear, genre, duration));
+
+        //SaveMusicUseCase saveMusicUseCase = new SaveMusicUseCase(musicDataRepository, digitalDataRepository);
+        //saveMusicUseCase.execute(new Music(code, name, artist, album, releaseYear, genre, duration));
     }
 
     public static void obtain() {
@@ -63,8 +64,8 @@ public class MusicPresentation {
         System.out.println("Dame el código de la música a mostrar");
         String code = sc.nextLine();
         MusicDataRepository musicDataRepository = new MusicDataRepository(new MusicFileLocalDataSource());
-        GetMusicUseCase getMusicUseCase = new GetMusicUseCase(musicDataRepository);
-        Music music = getMusicUseCase.execute(code);
-        System.out.println(music);
+        //GetMusicUseCase getMusicUseCase = new GetMusicUseCase(musicDataRepository);
+        //Music music = getMusicUseCase.execute(code);
+        //System.out.println(music);
     }
 }

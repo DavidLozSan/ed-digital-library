@@ -1,5 +1,8 @@
 package com.iesam.library.features.digitalCollection.domain.music.domain;
 
+import com.iesam.library.features.digitalCollection.music.domain.GetMusicUseCase;
+import com.iesam.library.features.digitalCollection.music.domain.Music;
+import com.iesam.library.features.digitalCollection.music.domain.MusicRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class GetMusicUseCaseTest {

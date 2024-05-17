@@ -1,4 +1,4 @@
-package com.iesam.library.features.digitalCollection.domain.music.domain;
+package com.iesam.library.features.digitalCollection.music.domain;
 
 public class GetMusicUseCase {
     public final MusicRepository musicRepository;

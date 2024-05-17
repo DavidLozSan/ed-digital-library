@@ -1,4 +1,4 @@
-package com.iesam.library.features.digitalCollection.domain.book.domain;
+package com.iesam.library.features.digitalCollection.book.domain;
 
 public class GetBookUseCase {
     public final BookRepository bookRepository;

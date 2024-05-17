@@ -2,6 +2,9 @@ package com.iesam.library.features.digitalCollection.domain.music.domain;
 
 import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.music.domain.Music;
+import com.iesam.library.features.digitalCollection.music.domain.MusicRepository;
+import com.iesam.library.features.digitalCollection.music.domain.SaveMusicUseCase;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

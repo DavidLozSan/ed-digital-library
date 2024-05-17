@@ -1,5 +1,8 @@
 package com.iesam.library.features.digitalCollection.domain.book.domain;
 
+import com.iesam.library.features.digitalCollection.book.domain.Book;
+import com.iesam.library.features.digitalCollection.book.domain.BookRepository;
+import com.iesam.library.features.digitalCollection.book.domain.GetBooksUseCase;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,8 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class GetBooksUseCaseTest {

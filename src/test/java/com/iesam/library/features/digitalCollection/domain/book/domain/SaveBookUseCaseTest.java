@@ -1,6 +1,8 @@
 package com.iesam.library.features.digitalCollection.domain.book.domain;
 
-import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.book.domain.Book;
+import com.iesam.library.features.digitalCollection.book.domain.BookRepository;
+import com.iesam.library.features.digitalCollection.book.domain.SaveBookUseCase;
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +22,7 @@ class SaveBookUseCaseTest {
 
     @BeforeEach
     void setUp() {
-        saveBookUseCase = new SaveBookUseCase(bookRepository, digitalRepository);
+        saveBookUseCase = new SaveBookUseCase(bookRepository);
     }
 
     @AfterEach
@@ -36,6 +38,5 @@ class SaveBookUseCaseTest {
         saveBookUseCase.execute(book);
 
         Mockito.verify(bookRepository, Mockito.times(1)).save(book);
-        Mockito.verify(digitalRepository, Mockito.times(1)).save(Mockito.any(DigitalCollection.class));
     }
 }

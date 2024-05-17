@@ -1,12 +1,9 @@
-package com.iesam.library.features.digitalCollection.domain.book.presentation;
+package com.iesam.library.features.digitalCollection.book.presentation;
 
-import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
-import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
-import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
-import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
-import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.book.domain.*;
+import com.iesam.library.features.digitalCollection.book.domain.*;
+import com.iesam.library.features.digitalCollection.book.data.BookDataRepository;
+import com.iesam.library.features.digitalCollection.book.data.local.BookFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -67,9 +64,8 @@ public class BookPresentation {
         String iSBN = sc.nextLine();
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
-        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        SaveBookUseCase saveBookUseCase = new SaveBookUseCase(bookDataRepository, digitalDataRepository);
+        DigitalRepository<Book> bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        SaveDigitalResourceUseCase saveBookUseCase = new SaveDigitalResourceUseCase(bookDataRepository);
         saveBookUseCase.execute(new Book(
                 code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre));
@@ -79,16 +75,16 @@ public class BookPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del libro");
         String code = sc.nextLine();
-        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        GetBookUseCase getBookUseCase = new GetBookUseCase(bookDataRepository);
-        Book book = getBookUseCase.execute(code);
+        DigitalRepository<Book> bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        GetDigitalResourceUseCase getBookUseCase = new GetDigitalResourceUseCase(bookDataRepository);
+        Book book = (Book) getBookUseCase.execute(code);
         System.out.println(book);
     }
 
     public static void obtainBooks() {
         BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        GetBooksUseCase getBooksUseCase = new GetBooksUseCase(bookDataRepository);
-        List<Book> books = getBooksUseCase.execute();
+        GetDigitalResourcesUseCase getBooksUseCase = new GetDigitalResourcesUseCase(bookDataRepository);
+        List<Book> books = (List<Book>) (List<?>) getBooksUseCase.execute();
         System.out.println(books);
     }
 
@@ -96,9 +92,8 @@ public class BookPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del libro");
         String code = sc.nextLine();
-        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        DeleteBookUseCase deleteBookUseCase = new DeleteBookUseCase(bookDataRepository, digitalDataRepository);
+        DigitalRepository digitalDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        DeleteDigitalResourceUseCase deleteBookUseCase = new DeleteDigitalResourceUseCase(digitalDataRepository);
         deleteBookUseCase.execute(code);
     }
 
@@ -123,9 +118,8 @@ public class BookPresentation {
         Book book = new Book(
                 code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre);
-        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(bookDataRepository, digitalDataRepository);
+        DigitalRepository digitalDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(digitalDataRepository);
         updateBookUseCase.execute(book);
     }
 }

@@ -1,5 +1,8 @@
 package com.iesam.library.features.digitalCollection.domain.book.domain;
 
+import com.iesam.library.features.digitalCollection.book.domain.Book;
+import com.iesam.library.features.digitalCollection.book.domain.BookRepository;
+import com.iesam.library.features.digitalCollection.book.domain.UpdateBookUseCase;
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import org.junit.jupiter.api.AfterEach;

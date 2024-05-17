@@ -1,12 +1,8 @@
 package com.iesam.library.features.digitalCollection.presentation;
 
-import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
-import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.*;
-import com.iesam.library.features.digitalCollection.domain.book.presentation.BookPresentation;
-import com.iesam.library.features.digitalCollection.domain.music.presentation.MusicPresentation;
+import com.iesam.library.features.digitalCollection.book.presentation.BookPresentation;
+import com.iesam.library.features.digitalCollection.music.presentation.MusicPresentation;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class DigitalCollectionPresentation {

@@ -1,8 +1,8 @@
-package com.iesam.library.features.digitalCollection.domain.book.data.local;
+package com.iesam.library.features.digitalCollection.music.data.local;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
+import com.iesam.library.features.digitalCollection.music.domain.Music;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,26 +14,25 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class BookFileLocalDataSource implements BookLocalDataSource {
-
-    private String nameFile = "book.txt";
+public class MusicFileLocalDataSource implements MusicLocalDataSource {
+    private String nameFile = "music.txt";
 
     private Gson gson = new Gson();
 
-    private final Type typeList = new TypeToken<ArrayList<Book>>() {
+    private final Type typeList = new TypeToken<ArrayList<Music>>() {
     }.getType();
 
-    public void save(Book model) {
-        List<Book> models = findAll();
+    public void save(Music model) {
+        List<Music> models = findAll();
         models.add(model);
         saveToFile(models);
     }
 
-    public void saveList(List<Book> models) {
+    public void saveList(List<Music> models) {
         saveToFile(models);
     }
 
-    private void saveToFile(List<Book> models) {
+    private void saveToFile(List<Music> models) {
         try {
             FileWriter myWriter = new FileWriter(nameFile);
             myWriter.write(gson.toJson(models));
@@ -45,9 +44,9 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         }
     }
 
-    public Book findByCode(String code) {
-        List<Book> models = findAll();
-        for (Book model : models) {
+    public Music findByCode(String code) {
+        List<Music> models = findAll();
+        for (Music model : models) {
             if (Objects.equals(model.getCode(), code)) {
                 return model;
             }
@@ -55,7 +54,7 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         return null;
     }
 
-    public List<Book> findAll() {
+    public List<Music> findAll() {
         try {
             File myObj = new File(nameFile);
             if (!myObj.exists()) {
@@ -79,9 +78,9 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
     }
 
     public void delete(String modelCode) {
-        List<Book> newList = new ArrayList<>();
-        List<Book> models = findAll();
-        for (Book model : models) {
+        List<Music> newList = new ArrayList<>();
+        List<Music> models = findAll();
+        for (Music model : models) {
             if (!model.getCode().equals(modelCode)) {
                 newList.add(model);
             }
@@ -89,8 +88,8 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         saveList(newList);
     }
 
-    public void update(Book book) {
-        delete(book.getCode());
-        save(book);
+    public void update(Music music) {
+        delete(music.getCode());
+        save(music);
     }
 }

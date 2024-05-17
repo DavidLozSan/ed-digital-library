@@ -1,4 +1,4 @@
-package com.iesam.library.features.digitalCollection.domain.book.domain;
+package com.iesam.library.features.digitalCollection.book.domain;
 
 import java.util.List;
 

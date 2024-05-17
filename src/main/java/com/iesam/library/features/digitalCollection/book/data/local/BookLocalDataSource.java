@@ -1,6 +1,6 @@
-package com.iesam.library.features.digitalCollection.domain.book.data.local;
+package com.iesam.library.features.digitalCollection.book.data.local;
 
-import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
+import com.iesam.library.features.digitalCollection.book.domain.Book;
 
 import java.util.List;
 

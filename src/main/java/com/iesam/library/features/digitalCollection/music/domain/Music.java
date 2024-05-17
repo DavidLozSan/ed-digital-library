@@ -1,4 +1,4 @@
-package com.iesam.library.features.digitalCollection.domain.music.domain;
+package com.iesam.library.features.digitalCollection.music.domain;
 
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
 import com.iesam.library.features.digitalCollection.domain.TypeDigitalCollection;
