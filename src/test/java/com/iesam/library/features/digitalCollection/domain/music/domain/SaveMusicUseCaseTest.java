@@ -2,6 +2,8 @@ package com.iesam.library.features.digitalCollection.domain.music.domain;
 
 import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,19 +16,18 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class SaveMusicUseCaseTest {
     @Mock
     MusicRepository musicRepository;
-    DigitalDataRepository digitalDataRepository;
+    @Mock
+    DigitalRepository digitalRepository;
     SaveMusicUseCase saveMusicUseCase;
 
     @BeforeEach
     void setUp() {
-        digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        saveMusicUseCase = new SaveMusicUseCase(musicRepository, digitalDataRepository);
+        saveMusicUseCase = new SaveMusicUseCase(musicRepository, digitalRepository);
     }
 
     @AfterEach
     void tearDown() {
         saveMusicUseCase = null;
-        digitalDataRepository = null;
     }
 
     @Test
@@ -37,5 +38,6 @@ class SaveMusicUseCaseTest {
         saveMusicUseCase.execute(music);
 
         Mockito.verify(musicRepository, Mockito.times(1)).saveMusic(music);
+        Mockito.verify(digitalRepository, Mockito.times(1)).save(Mockito.any(DigitalCollection.class));
     }
 }
