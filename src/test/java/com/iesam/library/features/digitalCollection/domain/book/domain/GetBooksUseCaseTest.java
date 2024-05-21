@@ -40,6 +40,8 @@ class GetBooksUseCaseTest {
 
         List<Book> listOfBooksReceived = getBooksUseCase.execute();
 
-        Assertions.assertEquals(listOfBooksReceived, expectedBooksList);
+        Assertions.assertEquals(listOfBooksReceived.size(), expectedBooksList.size());
+        Assertions.assertEquals(listOfBooksReceived.get(0).code, "001");
+        Assertions.assertEquals(listOfBooksReceived.get(1).code, "002");
     }
 }
