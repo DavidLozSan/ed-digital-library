@@ -2,19 +2,20 @@ package com.iesam.library.features.digitalCollection.domain.music.domain;
 
 import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
 import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 
 
 public class SaveMusicUseCase {
     public final MusicRepository musicRepository;
-    public final DigitalDataRepository digitalDataRepository;
+    public final DigitalRepository digitalRepository;
 
-    public SaveMusicUseCase(MusicRepository musicRepository, DigitalDataRepository digitalDataRepository) {
+    public SaveMusicUseCase(MusicRepository musicRepository, DigitalRepository digitalRepository) {
         this.musicRepository = musicRepository;
-        this.digitalDataRepository = digitalDataRepository;
+        this.digitalRepository = digitalRepository;
     }
 
     public void execute(Music music) {
         this.musicRepository.saveMusic(music);
-        this.digitalDataRepository.save(new DigitalCollection(music.code, music.digitalResourceType, music.name));
+        this.digitalRepository.save(new DigitalCollection(music.code, music.digitalResourceType, music.name));
     }
 }
