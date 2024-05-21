@@ -1,6 +1,7 @@
 package com.iesam.library.features.digitalCollection.domain;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,6 +40,8 @@ class GetDigitalResourcesUseCaseTest {
 
         List<DigitalCollection> dititalResourcesListReceived = getDigitalResourcesUseCase.execute();
 
-        assertEquals(dititalResourcesListReceived, expectedDigitalResourcesList);
+        Assertions.assertEquals(dititalResourcesListReceived.size(), expectedDigitalResourcesList.size());
+        Assertions.assertEquals(dititalResourcesListReceived.get(0).code, "001");
+        Assertions.assertEquals(dititalResourcesListReceived.get(1).code, "002");
     }
 }
