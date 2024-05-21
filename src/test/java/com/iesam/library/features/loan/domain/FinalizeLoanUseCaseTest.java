@@ -18,11 +18,13 @@ import static org.mockito.ArgumentMatchers.any;
 class FinalizeLoanUseCaseTest {
     @Mock
     LoanRepository loanRepository;
+    @Mock
+    LoanFactory loanFactory;
     FinalizeLoanUseCase finalizeLoanUseCase;
 
     @BeforeEach
     void setUp() {
-        finalizeLoanUseCase = new FinalizeLoanUseCase(loanRepository);
+        finalizeLoanUseCase = new FinalizeLoanUseCase(loanRepository, loanFactory);
     }
 
     @AfterEach
@@ -38,11 +40,15 @@ class FinalizeLoanUseCaseTest {
         DigitalCollection digitalCollection = new DigitalCollection("001", TypeDigitalCollection.BOOK,
                 "Libro1");
         Loan loan = new Loan(loanCode, user, digitalCollection);
+        Loan loanFinalized = new Loan(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
+                loan.loanEndDate);
         Mockito.when(loanRepository.obtainLoan(loanCode)).thenReturn(loan);
+        Mockito.when(loanFactory.build(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
+                loan.loanEndDate)).thenReturn(loanFinalized);
 
         finalizeLoanUseCase.execute(loanCode);
 
         Mockito.verify(loanRepository, Mockito.times(1)).obtainLoan(loanCode);
-        Mockito.verify(loanRepository, Mockito.times(1)).finalizeLoan(any(Loan.class));
+        Mockito.verify(loanRepository, Mockito.times(1)).finalizeLoan(loanFinalized);
     }
 }
