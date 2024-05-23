@@ -14,8 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class GetUnfinishedLoansUseCaseTest {
     @Mock
@@ -46,7 +44,11 @@ class GetUnfinishedLoansUseCaseTest {
 
         List<Loan> result = getUnfinishedLoansUseCase.execute();
 
-        Assertions.assertEquals(result, unfinishedLoans);
+        Assertions.assertEquals(result.size(), unfinishedLoans.size());
+        Assertions.assertEquals(result.get(0).code, "001");
+        Assertions.assertEquals(result.get(1).code, "002");
+        Assertions.assertEquals(result.get(0).loanStatus, "Activo");
+        Assertions.assertEquals(result.get(1).loanStatus, "Activo");
         Mockito.verify(loanRepository, Mockito.times(1)).unfinishedLoans();
     }
 }

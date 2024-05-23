@@ -1,7 +1,5 @@
 package com.iesam.library.features.digitalCollection.domain;
 
-import com.iesam.library.features.digitalCollection.book.domain.Book;
-
 public class DeleteDigitalResourceUseCase {
     public final DigitalRepository digitalRepository;
 

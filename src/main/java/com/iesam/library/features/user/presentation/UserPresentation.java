@@ -46,8 +46,6 @@ public class UserPresentation {
     }
 
     public static void save() {
-        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
-        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(userDataRepository);
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código del usuario");
         String code = sc.nextLine();
@@ -63,8 +61,10 @@ public class UserPresentation {
         String email = sc.nextLine();
         System.out.println("Dame el telefono del usuario");
         String phone = sc.nextLine();
-        User user = new User(code, dni, name, surnames, expeditionDate, email, phone);
-        saveUserUseCase.execute(user);
+        UserFactory userFactory = new UserFactory();
+        UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        SaveUserUseCase saveUserUseCase = new SaveUserUseCase(userDataRepository, userFactory);
+        saveUserUseCase.execute(code, dni, name, surnames, expeditionDate, email, phone);
     }
 
 
@@ -110,9 +110,9 @@ public class UserPresentation {
         String email = sc.nextLine();
         System.out.println("Dame el telefono del usuario");
         String phone = sc.nextLine();
-        User user = new User(code, dni, name, surnames, expeditionDate, email, phone);
+        UserFactory userFactory = new UserFactory();
         UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
-        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(userDataRepository);
-        updateUserUserCase.execute(user);
+        UpdateUserUserCase updateUserUserCase = new UpdateUserUserCase(userDataRepository, userFactory);
+        updateUserUserCase.execute(code, dni, name, surnames, expeditionDate, email, phone);
     }
 }

@@ -43,28 +43,4 @@ public class Loan {
                 ", loanStatus='" + loanStatus + '\'' +
                 '}';
     }
-
-    public String getCode() {
-        return code;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public DigitalCollection getDigitalCollection() {
-        return digitalCollection;
-    }
-
-    public String getLoanStartDate() {
-        return loanStartDate;
-    }
-
-    public String getLoanEndDate() {
-        return loanEndDate;
-    }
-
-    public String getLoanStatus() {
-        return loanStatus;
-    }
 }

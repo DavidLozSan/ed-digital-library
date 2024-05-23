@@ -9,7 +9,8 @@ public class User {
     public final String email;
     public final String phone;
 
-    public User(String code, String dni, String name, String surnames, String expeditionDate, String email, String phone) {
+    public User(String code, String dni, String name, String surnames, String expeditionDate, String email,
+                String phone) {
         this.code = code;
         this.dni = dni;
         this.name = name;
@@ -21,35 +22,8 @@ public class User {
 
     @Override
     public String toString() {
-
-        return "User{" + "code='" + code + '\'' + ", dni='" + dni + '\'' + ", name='" + name + '\'' + ", surnames='" + surnames + '\'' + ", expeditionDate='" + expeditionDate + '\'' + ", email='" + email + '\'' + ", phone='" + phone + '\'' + '}';
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurnames() {
-        return surnames;
-    }
-
-    public String getExpeditionDate() {
-        return expeditionDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
+        return "User{" + "code='" + code + '\'' + ", dni='" + dni + '\'' + ", name='" + name + '\'' + "," +
+                " surnames='" + surnames + '\'' + ", expeditionDate='" + expeditionDate + '\'' + "," +
+                " email='" + email + '\'' + ", phone='" + phone + '\'' + '}';
     }
 }

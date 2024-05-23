@@ -16,9 +16,9 @@ import java.util.Scanner;
 
 public class LoanFileLocalDataSource implements LoanLocalDataSource {
 
-    private String nameFile = "loan.txt";
+    private final String nameFile = "loan.txt";
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private final Type typeList = new TypeToken<ArrayList<Loan>>() {
     }.getType();
@@ -48,7 +48,7 @@ public class LoanFileLocalDataSource implements LoanLocalDataSource {
     public Loan findByCode(String code) {
         List<Loan> models = findAll();
         for (Loan model : models) {
-            if (Objects.equals(model.getCode(), code)) {
+            if (Objects.equals(model.code, code)) {
                 return model;
             }
         }
@@ -82,7 +82,7 @@ public class LoanFileLocalDataSource implements LoanLocalDataSource {
         List<Loan> newList = new ArrayList<>();
         List<Loan> models = findAll();
         for (Loan model : models) {
-            if (!model.getCode().equals(modelCode)) {
+            if (!model.code.equals(modelCode)) {
                 newList.add(model);
             }
         }

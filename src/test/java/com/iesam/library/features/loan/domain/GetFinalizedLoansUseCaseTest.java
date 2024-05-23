@@ -14,8 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class GetFinalizedLoansUseCaseTest {
     @Mock
@@ -46,7 +44,11 @@ class GetFinalizedLoansUseCaseTest {
 
         List<Loan> result = getFinalizedLoansUseCase.execute();
 
-        Assertions.assertEquals(finalizedLoans, result);
+        Assertions.assertEquals(result.size(), finalizedLoans.size());
+        Assertions.assertEquals(result.get(0).code, "001");
+        Assertions.assertEquals(result.get(1).code, "002");
+        Assertions.assertEquals(result.get(0).loanStatus, "Finalizado");
+        Assertions.assertEquals(result.get(1).loanStatus, "Finalizado");
         Mockito.verify(loanRepository, Mockito.times(1)).finalizedLoans();
     }
 }

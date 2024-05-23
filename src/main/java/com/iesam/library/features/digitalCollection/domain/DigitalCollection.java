@@ -19,16 +19,4 @@ public class DigitalCollection {
                 ", name='" + name + '\'' +
                 '}';
     }
-
-    public String getCode() {
-        return code;
-    }
-
-    public TypeDigitalCollection getDigitalResourceType() {
-        return digitalResourceType;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
