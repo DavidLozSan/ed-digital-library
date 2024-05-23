@@ -9,4 +9,9 @@ public class LoanFactory {
         Loan loan = new Loan(id, user, digitalCollection, loanStartDate, loanEndDate);
         return loan;
     }
+
+    public Loan buildActivated(String id, User user, DigitalCollection digitalCollection) {
+        Loan loan = new Loan(id, user, digitalCollection);
+        return loan;
+    }
 }

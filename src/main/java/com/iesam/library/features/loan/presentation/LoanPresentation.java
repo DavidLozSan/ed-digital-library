@@ -1,16 +1,12 @@
 package com.iesam.library.features.loan.presentation;
 
-import com.iesam.library.features.digitalCollection.data.DigitalDataRepository;
-import com.iesam.library.features.digitalCollection.data.local.DigitalFileLocalDataSource;
-import com.iesam.library.features.digitalCollection.domain.book.data.BookDataRepository;
-import com.iesam.library.features.digitalCollection.domain.book.data.local.BookFileLocalDataSource;
+import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import com.iesam.library.features.loan.data.LoanDataRepository;
 import com.iesam.library.features.loan.data.local.LoanFileLocalDataSource;
 import com.iesam.library.features.loan.domain.*;
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,12 +60,15 @@ public class LoanPresentation {
         String userCode = sc.nextLine();
         System.out.println("Dame el código del recurso digital");
         String digitalResourceCode = sc.nextLine();
+        System.out.println("Typo de recurso (1: Libro, 2: Música)");
+        String typeDigitalResource = sc.nextLine();
         LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
-        DigitalDataRepository digitalDataRepository = new DigitalDataRepository(new DigitalFileLocalDataSource());
-        BookDataRepository bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
+        LoanFactory loanFactory = new LoanFactory();
+
+        DigitalRepository digitalRepository = DigitalTypeFactory.getRepository(typeDigitalResource);
         SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository, userDataRepository,
-                digitalDataRepository, bookDataRepository);
+                digitalRepository, loanFactory);
         saveLoanUseCase.execute(code, userCode, digitalResourceCode);
     }
 

@@ -2,14 +2,14 @@ package com.iesam.library.features.digitalCollection.domain;
 
 import java.util.List;
 
-public interface DigitalRepository {
-    void save(DigitalCollection digitalCollection);
+public interface DigitalRepository<T extends DigitalCollection> {
+    void save(T digitalCollection);
 
-    DigitalCollection obtain(String digitalResourceCode);
+    T obtain(String digitalResourceCode);
 
-    List<DigitalCollection> obtainDigitalResources();
+    List<T> obtainDigitalResources();
 
     void delete(String code);
 
-    void update(DigitalCollection digitalCollection);
+    void update(T digitalCollection);
 }
