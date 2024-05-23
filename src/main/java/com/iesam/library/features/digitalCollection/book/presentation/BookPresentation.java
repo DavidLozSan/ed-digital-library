@@ -64,10 +64,10 @@ public class BookPresentation {
         String iSBN = sc.nextLine();
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
+        BookFactory bookFactory = new BookFactory();
         DigitalRepository<Book> bookDataRepository = new BookDataRepository(new BookFileLocalDataSource());
         SaveDigitalResourceUseCase saveBookUseCase = new SaveDigitalResourceUseCase(bookDataRepository);
-        saveBookUseCase.execute(new Book(
-                code, name, author, editorial,
+        saveBookUseCase.execute(bookFactory.build(code, name, author, editorial,
                 yearOfPublication, editionNumber, iSBN, genre));
     }
 
@@ -115,11 +115,10 @@ public class BookPresentation {
         String iSBN = sc.nextLine();
         System.out.println("Dame el genero principal del libro");
         String genre = sc.nextLine();
-        Book book = new Book(
-                code, name, author, editorial,
-                yearOfPublication, editionNumber, iSBN, genre);
+        BookFactory bookFactory = new BookFactory();
         DigitalRepository digitalDataRepository = new BookDataRepository(new BookFileLocalDataSource());
-        UpdateBookUseCase updateBookUseCase = new UpdateBookUseCase(digitalDataRepository);
-        updateBookUseCase.execute(book);
+        UpdateDigitalResourceUseCase updateBookUseCase = new UpdateDigitalResourceUseCase(digitalDataRepository);
+        updateBookUseCase.execute(bookFactory.build(code, name, author, editorial,
+                yearOfPublication, editionNumber, iSBN, genre));
     }
 }

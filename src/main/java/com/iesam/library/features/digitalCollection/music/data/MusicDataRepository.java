@@ -25,16 +25,16 @@ public class MusicDataRepository implements DigitalRepository<Music> {
 
     @Override
     public List<Music> obtainDigitalResources() {
-        return null;
+        return musicLocalDataSource.findAll();
     }
 
     @Override
     public void delete(String code) {
-
+        musicLocalDataSource.delete(code);
     }
 
     @Override
     public void update(Music digitalCollection) {
-
+        musicLocalDataSource.update(digitalCollection);
     }
 }

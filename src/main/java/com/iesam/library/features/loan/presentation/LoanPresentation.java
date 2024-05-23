@@ -64,9 +64,11 @@ public class LoanPresentation {
         String typeDigitalResource = sc.nextLine();
         LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
+        LoanFactory loanFactory = new LoanFactory();
 
         DigitalRepository digitalRepository = DigitalTypeFactory.getRepository(typeDigitalResource);
-        SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository, userDataRepository, digitalRepository);
+        SaveLoanUseCase saveLoanUseCase = new SaveLoanUseCase(loanDataRepository, userDataRepository,
+                digitalRepository, loanFactory);
         saveLoanUseCase.execute(code, userCode, digitalResourceCode);
     }
 
