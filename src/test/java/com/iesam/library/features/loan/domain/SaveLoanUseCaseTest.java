@@ -1,14 +1,23 @@
 package com.iesam.library.features.loan.domain;
 
+import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
-import com.iesam.library.features.digitalCollection.book.domain.BookRepository;
-import com.iesam.library.features.digitalCollection.music.domain.MusicRepository;
+import com.iesam.library.features.digitalCollection.domain.TypeDigitalCollection;
+import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
+import com.iesam.library.features.digitalCollection.domain.book.domain.BookRepository;
+import com.iesam.library.features.user.domain.User;
 import com.iesam.library.features.user.domain.UserRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class SaveLoanUseCaseTest {
@@ -20,20 +29,18 @@ class SaveLoanUseCaseTest {
     DigitalRepository digitalRepository;
     @Mock
     BookRepository bookRepository;
-    @Mock
-    MusicRepository musicRepository;
     SaveLoanUseCase saveLoanUseCase;
 
     @BeforeEach
     void setUp() {
-        saveLoanUseCase = new SaveLoanUseCase(loanRepository, userRepository, digitalRepository, );
+        saveLoanUseCase = new SaveLoanUseCase(loanRepository, userRepository, digitalRepository, bookRepository);
     }
 
     @AfterEach
     void tearDown() {
         saveLoanUseCase = null;
     }
-    /*
+
     @Test
     public void givenABookLoanThenTheUseCaseIsExecuted() {
         String loanCode = "001";
@@ -62,7 +69,5 @@ class SaveLoanUseCaseTest {
         Assertions.assertEquals(loanCode, capturedLoan.code);
         Assertions.assertEquals(user, capturedLoan.user);
         Assertions.assertEquals(book, capturedLoan.digitalCollection);
-
     }
-     */
 }
