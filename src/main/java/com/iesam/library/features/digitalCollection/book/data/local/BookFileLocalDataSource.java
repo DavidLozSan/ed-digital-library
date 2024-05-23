@@ -16,9 +16,9 @@ import java.util.Scanner;
 
 public class BookFileLocalDataSource implements BookLocalDataSource {
 
-    private String nameFile = "book.txt";
+    private final String nameFile = "book.txt";
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private final Type typeList = new TypeToken<ArrayList<Book>>() {
     }.getType();
@@ -48,7 +48,7 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
     public Book findByCode(String code) {
         List<Book> models = findAll();
         for (Book model : models) {
-            if (Objects.equals(model.getCode(), code)) {
+            if (Objects.equals(model.code, code)) {
                 return model;
             }
         }
@@ -82,7 +82,7 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
         List<Book> newList = new ArrayList<>();
         List<Book> models = findAll();
         for (Book model : models) {
-            if (!model.getCode().equals(modelCode)) {
+            if (!model.code.equals(modelCode)) {
                 newList.add(model);
             }
         }
@@ -90,7 +90,7 @@ public class BookFileLocalDataSource implements BookLocalDataSource {
     }
 
     public void update(Book book) {
-        delete(book.getCode());
+        delete(book.code);
         save(book);
     }
 }

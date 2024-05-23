@@ -35,28 +35,4 @@ public class Book extends DigitalCollection {
                 ", genre='" + genre + '\'' +
                 '}';
     }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getEditorial() {
-        return editorial;
-    }
-
-    public String getYearOfPublication() {
-        return yearOfPublication;
-    }
-
-    public String getEditionNumber() {
-        return editionNumber;
-    }
-
-    public String getiSBN() {
-        return iSBN;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
 }

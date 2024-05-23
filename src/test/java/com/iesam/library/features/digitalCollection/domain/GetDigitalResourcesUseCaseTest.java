@@ -11,8 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class GetDigitalResourcesUseCaseTest {
     @Mock
@@ -43,5 +41,6 @@ class GetDigitalResourcesUseCaseTest {
         Assertions.assertEquals(dititalResourcesListReceived.size(), expectedDigitalResourcesList.size());
         Assertions.assertEquals(dititalResourcesListReceived.get(0).code, "001");
         Assertions.assertEquals(dititalResourcesListReceived.get(1).code, "002");
+        Mockito.verify(digitalRepository, Mockito.times(1)).obtainDigitalResources();
     }
 }

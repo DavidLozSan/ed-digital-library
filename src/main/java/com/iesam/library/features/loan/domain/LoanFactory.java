@@ -4,14 +4,12 @@ import com.iesam.library.features.digitalCollection.domain.DigitalCollection;
 import com.iesam.library.features.user.domain.User;
 
 public class LoanFactory {
-    public Loan build(String id, User user, DigitalCollection digitalCollection, String loanStartDate,
+    public Loan buildFinalized(String id, User user, DigitalCollection digitalCollection, String loanStartDate,
                       String loanEndDate) {
-        Loan loan = new Loan(id, user, digitalCollection, loanStartDate, loanEndDate);
-        return loan;
+        return new Loan(id, user, digitalCollection, loanStartDate, loanEndDate);
     }
 
     public Loan buildActivated(String id, User user, DigitalCollection digitalCollection) {
-        Loan loan = new Loan(id, user, digitalCollection);
-        return loan;
+        return new Loan(id, user, digitalCollection);
     }
 }

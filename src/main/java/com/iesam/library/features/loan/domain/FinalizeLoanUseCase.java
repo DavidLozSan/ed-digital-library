@@ -11,7 +11,7 @@ public class FinalizeLoanUseCase {
 
     public void execute(String code) {
         Loan loan = loanRepository.obtainLoan(code);
-        Loan finalizeLoan = loanFactory.build(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
+        Loan finalizeLoan = loanFactory.buildFinalized(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
                 loan.loanEndDate);
         this.loanRepository.finalizeLoan(finalizeLoan);
     }

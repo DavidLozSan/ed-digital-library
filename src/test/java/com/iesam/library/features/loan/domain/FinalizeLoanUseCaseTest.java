@@ -11,9 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-
 @ExtendWith(MockitoExtension.class)
 class FinalizeLoanUseCaseTest {
     @Mock
@@ -43,12 +40,14 @@ class FinalizeLoanUseCaseTest {
         Loan loanFinalized = new Loan(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
                 loan.loanEndDate);
         Mockito.when(loanRepository.obtainLoan(loanCode)).thenReturn(loan);
-        Mockito.when(loanFactory.build(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
+        Mockito.when(loanFactory.buildFinalized(loan.code, loan.user, loan.digitalCollection, loan.loanStartDate,
                 loan.loanEndDate)).thenReturn(loanFinalized);
 
         finalizeLoanUseCase.execute(loanCode);
 
         Mockito.verify(loanRepository, Mockito.times(1)).obtainLoan(loanCode);
+        Mockito.verify(loanFactory, Mockito.times(1)).buildFinalized(loan.code, loan.user,
+                loan.digitalCollection, loan.loanStartDate, loan.loanEndDate);
         Mockito.verify(loanRepository, Mockito.times(1)).finalizeLoan(loanFinalized);
     }
 }

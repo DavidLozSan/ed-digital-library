@@ -12,11 +12,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class SaveUserUseCaseTest {
     @Mock
     UserRepository userRepository;
+    @Mock
+    UserFactory userFactory;
     SaveUserUseCase saveUserUseCase;
 
     @BeforeEach
     void setUp() {
-        saveUserUseCase = new SaveUserUseCase(userRepository);
+        saveUserUseCase = new SaveUserUseCase(userRepository, userFactory);
     }
 
     @AfterEach
@@ -28,9 +30,14 @@ class SaveUserUseCaseTest {
     public void receiveAUserAndSave() {
         User user = new User("044", "77788899A", "David", "Apellidos",
                 "13/05/2024", "david@correo.es", "777888999");
+        Mockito.when(userFactory.build(user.code, user.dni, user.name, user.surnames, user.expeditionDate,
+                user.email, user.phone)).thenReturn(user);
 
-        saveUserUseCase.execute(user);
+        saveUserUseCase.execute(user.code, user.dni, user.name, user.surnames, user.expeditionDate,
+                user.email, user.phone);
 
+        Mockito.verify(userFactory, Mockito.times(1)).build(user.code, user.dni, user.name, user.surnames, user.expeditionDate,
+                user.email, user.phone);
         Mockito.verify(userRepository, Mockito.times(1)).save(user);
     }
 }

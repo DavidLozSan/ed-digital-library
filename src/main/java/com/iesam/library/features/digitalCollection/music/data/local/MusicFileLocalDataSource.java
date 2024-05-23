@@ -15,9 +15,9 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class MusicFileLocalDataSource implements MusicLocalDataSource {
-    private String nameFile = "music.txt";
+    private final String nameFile = "music.txt";
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private final Type typeList = new TypeToken<ArrayList<Music>>() {
     }.getType();
@@ -47,7 +47,7 @@ public class MusicFileLocalDataSource implements MusicLocalDataSource {
     public Music findByCode(String code) {
         List<Music> models = findAll();
         for (Music model : models) {
-            if (Objects.equals(model.getCode(), code)) {
+            if (Objects.equals(model.code, code)) {
                 return model;
             }
         }
@@ -81,7 +81,7 @@ public class MusicFileLocalDataSource implements MusicLocalDataSource {
         List<Music> newList = new ArrayList<>();
         List<Music> models = findAll();
         for (Music model : models) {
-            if (!model.getCode().equals(modelCode)) {
+            if (!model.code.equals(modelCode)) {
                 newList.add(model);
             }
         }
@@ -89,7 +89,7 @@ public class MusicFileLocalDataSource implements MusicLocalDataSource {
     }
 
     public void update(Music music) {
-        delete(music.getCode());
+        delete(music.code);
         save(music);
     }
 }

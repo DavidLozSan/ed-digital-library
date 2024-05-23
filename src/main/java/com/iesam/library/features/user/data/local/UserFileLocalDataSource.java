@@ -16,9 +16,9 @@ import java.util.Scanner;
 
 public class UserFileLocalDataSource implements UserLocalDataSource {
 
-    private String nameFile = "user.txt";
+    private final String nameFile = "user.txt";
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private final Type typeList = new TypeToken<ArrayList<User>>() {
     }.getType();
@@ -48,7 +48,7 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
     public User findByCode(String code) {
         List<User> models = findAll();
         for (User model : models) {
-            if (Objects.equals(model.getCode(), code)) {
+            if (Objects.equals(model.code, code)) {
                 return model;
             }
         }
@@ -82,7 +82,7 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
         List<User> newList = new ArrayList<>();
         List<User> models = findAll();
         for (User model : models) {
-            if (!model.getCode().equals(modelCode)) {
+            if (!model.code.equals(modelCode)) {
                 newList.add(model);
             }
         }
@@ -90,7 +90,7 @@ public class UserFileLocalDataSource implements UserLocalDataSource {
     }
 
     public void update(User user) {
-        delete(user.getCode());
+        delete(user.code);
         save(user);
     }
 }
