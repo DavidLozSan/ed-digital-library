@@ -105,8 +105,9 @@ public class LoanPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código de préstamo para finalizar");
         String code = sc.nextLine();
+        LoanFactory loanFactory = new LoanFactory();
         LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
-        FinalizeLoanUseCase finalizeLoanUseCase = new FinalizeLoanUseCase(loanDataRepository);
+        FinalizeLoanUseCase finalizeLoanUseCase = new FinalizeLoanUseCase(loanDataRepository, loanFactory);
         finalizeLoanUseCase.execute(code);
     }
 

@@ -5,7 +5,6 @@ import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import com.iesam.library.features.digitalCollection.domain.TypeDigitalCollection;
 import com.iesam.library.features.digitalCollection.domain.book.domain.Book;
 import com.iesam.library.features.digitalCollection.domain.book.domain.BookRepository;
-import com.iesam.library.features.digitalCollection.domain.music.domain.MusicRepository;
 import com.iesam.library.features.user.domain.User;
 import com.iesam.library.features.user.domain.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -30,21 +29,18 @@ class SaveLoanUseCaseTest {
     DigitalRepository digitalRepository;
     @Mock
     BookRepository bookRepository;
-    @Mock
-    MusicRepository musicRepository;
     SaveLoanUseCase saveLoanUseCase;
 
     @BeforeEach
     void setUp() {
-        saveLoanUseCase = new SaveLoanUseCase(loanRepository, userRepository, digitalRepository, bookRepository,
-                musicRepository);
+        saveLoanUseCase = new SaveLoanUseCase(loanRepository, userRepository, digitalRepository, bookRepository);
     }
 
     @AfterEach
     void tearDown() {
         saveLoanUseCase = null;
     }
-    /*
+
     @Test
     public void givenABookLoanThenTheUseCaseIsExecuted() {
         String loanCode = "001";
@@ -73,7 +69,5 @@ class SaveLoanUseCaseTest {
         Assertions.assertEquals(loanCode, capturedLoan.code);
         Assertions.assertEquals(user, capturedLoan.user);
         Assertions.assertEquals(book, capturedLoan.digitalCollection);
-
     }
-     */
 }
