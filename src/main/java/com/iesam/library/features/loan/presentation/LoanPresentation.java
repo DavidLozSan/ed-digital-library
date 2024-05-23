@@ -2,15 +2,30 @@ package com.iesam.library.features.loan.presentation;
 
 import com.iesam.library.features.digitalCollection.domain.DigitalRepository;
 import com.iesam.library.features.loan.data.LoanDataRepository;
-import com.iesam.library.features.loan.data.local.LoanFileLocalDataSource;
 import com.iesam.library.features.loan.domain.*;
 import com.iesam.library.features.user.data.UserDataRepository;
 import com.iesam.library.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.library.features.loan.data.local.LoanMemLocalDataSource;
 
+import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
 public class LoanPresentation {
+    private static LoanDataRepository loanDataRepository;
+
+    static {
+        File file = new File("loan.txt");
+        LoanMemLocalDataSource localDataSource = LoanMemLocalDataSource.getInstance(file);
+        loanDataRepository = new LoanDataRepository(localDataSource);
+
+        loanDataRepository.loadFromFile();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            loanDataRepository.saveToFile();
+        }));
+    }
+
     public static void loanMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n---------------------------------");
@@ -62,7 +77,6 @@ public class LoanPresentation {
         String digitalResourceCode = sc.nextLine();
         System.out.println("Typo de recurso (1: Libro, 2: Música)");
         String typeDigitalResource = sc.nextLine();
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         UserDataRepository userDataRepository = new UserDataRepository(new UserFileLocalDataSource());
         LoanFactory loanFactory = new LoanFactory();
 
@@ -76,14 +90,12 @@ public class LoanPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código de préstamo a eliminar");
         String code = sc.nextLine();
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         DeleteLoanUseCase deleteLoanUseCase = new DeleteLoanUseCase(loanDataRepository);
         deleteLoanUseCase.execute(code);
     }
 
     public static void unfinishedLoans() {
         System.out.println("El listado de préstamos sin finalizar: ");
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         GetUnfinishedLoansUseCase getUnfinishedLoansUseCase = new GetUnfinishedLoansUseCase(loanDataRepository);
         List<Loan> loans = getUnfinishedLoansUseCase.execute();
         System.out.println(loans);
@@ -91,7 +103,6 @@ public class LoanPresentation {
 
     public static void finalizedLoans() {
         System.out.println("El listado de préstamos finalizados: ");
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         GetFinalizedLoansUseCase getFinalizedLoansUseCase = new GetFinalizedLoansUseCase(loanDataRepository);
         List<Loan> loans = getFinalizedLoansUseCase.execute();
         System.out.println(loans);
@@ -102,7 +113,6 @@ public class LoanPresentation {
         System.out.println("Dame el código de préstamo para finalizar");
         String code = sc.nextLine();
         LoanFactory loanFactory = new LoanFactory();
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         FinalizeLoanUseCase finalizeLoanUseCase = new FinalizeLoanUseCase(loanDataRepository, loanFactory);
         finalizeLoanUseCase.execute(code);
     }
@@ -111,7 +121,6 @@ public class LoanPresentation {
         Scanner sc = new Scanner(System.in);
         System.out.println("Dame el código de préstamo para mostrar su información");
         String code = sc.nextLine();
-        LoanDataRepository loanDataRepository = new LoanDataRepository(new LoanFileLocalDataSource());
         GetLoanUseCase getLoanUseCase = new GetLoanUseCase(loanDataRepository);
         Loan loan = getLoanUseCase.execute(code);
         System.out.println(loan);
