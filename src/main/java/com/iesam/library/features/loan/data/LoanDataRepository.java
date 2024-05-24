@@ -1,6 +1,7 @@
 package com.iesam.library.features.loan.data;
 
 import com.iesam.library.features.loan.data.local.LoanLocalDataSource;
+import com.iesam.library.features.loan.data.local.LoanMemLocalDataSource;
 import com.iesam.library.features.loan.domain.Loan;
 import com.iesam.library.features.loan.domain.LoanRepository;
 
@@ -42,5 +43,17 @@ public class LoanDataRepository implements LoanRepository {
     @Override
     public Loan obtainLoan(String code) {
         return loanLocalDataSource.findByCode(code);
+    }
+
+    public void loadFromFile() {
+        if (loanLocalDataSource instanceof LoanMemLocalDataSource) {
+            ((LoanMemLocalDataSource) loanLocalDataSource).loadFromFile();
+        }
+    }
+
+    public void saveToFile() {
+        if (loanLocalDataSource instanceof LoanMemLocalDataSource) {
+            ((LoanMemLocalDataSource) loanLocalDataSource).saveToFile();
+        }
     }
 }
