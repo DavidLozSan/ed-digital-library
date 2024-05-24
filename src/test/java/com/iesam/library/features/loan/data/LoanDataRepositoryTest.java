@@ -4,7 +4,6 @@ import com.iesam.library.features.digitalCollection.book.domain.Book;
 import com.iesam.library.features.digitalCollection.music.domain.Music;
 import com.iesam.library.features.loan.data.local.LoanMemLocalDataSource;
 import com.iesam.library.features.loan.domain.Loan;
-import com.iesam.library.features.loan.domain.LoanRepository;
 import com.iesam.library.features.user.domain.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
